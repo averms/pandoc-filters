@@ -1,5 +1,9 @@
--- file: code-includes.lua
--- Substitute files inside code blocks
+--[[ file: code-includes.lua
+
+    Copyright (c) 2018 Aman Verma
+    This code is licensed under the MIT license (see LICENSE for details)
+    Substitues code blocks containing `include` attributes with the included file.
+--]]
 
 function readit(filename)
     -- read contents of file
