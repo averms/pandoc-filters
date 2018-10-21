@@ -6,7 +6,7 @@
 --]]
 
 function readit(filename)
-    -- read contents of file
+    -- return contents of file and close the file
     local file = io.open(filename, 'r')
     local contents = file:read("*all")
     file:close()
