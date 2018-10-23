@@ -2,16 +2,16 @@
 
     Copyright (c) 2018 Aman Verma
     This code is licensed under the MIT license (see LICENSE for details)
-    Substitues code blocks containing `include` attributes with the included file.
+    If no LICENSE was distributed with this file, see
+    https://github.com/aaether32323/pandoc-filters/raw/master/LICENSE
+    Substitues code blocks containing `file` attributes with the file inside.
 --]]
 local inspect = require("inspect")
 
 -- helper funcs
-function readit()
-    -- return contents of global var `filename` and close the file
-    local file = io.open(filename, 'r')
-    local contents = file:read("*all")
-    file:close()
+local function readPopulatedLines(fpth)
+    io.input(fpth)
+    local contents = io.read("all")
     -- strip end of string
     contents = contents:gsub("%s+$", "")
     return contents
@@ -22,13 +22,8 @@ return {
     {
         CodeBlock = function(cb)
             if cb.attributes["file"] then
-                filename = cb.attributes["file"]
-                local succeeded, content = pcall(readit)
-                if succeeded then
-                    cb.text = readit(content)
-                else
-                    print("E: file not found " .. filename)
-                end
+                filename = cb.text:match("^%s*(.-)%s*$")
+                cb.text = readPopulatedLines(filename)
             end
             return cb
         end,

@@ -1,4 +1,4 @@
-FILTERS := code-includes.lua
+FILTERS := code-includes.lua md-includes.lua
 
 all: $(FILTERS)
 
