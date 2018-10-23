@@ -1,20 +1,39 @@
 # test
 
-OUTDIR := .
-MD := test1.md
-CODE := test1.lua
-HTML:= $(MD:.md=.html)
+OG := test.md
+AUX := test.lua
+HTML := out.html
+MD := out.markdown
+JSON := out.json
 
-all: $(HTML)
+test: test_html test_markdown test_json
 
-$(HTML): $(MD)
+test_html: $(OG)
 	pandoc \
-		--section-divs \
-		--toc \
+		--verbose \
+		--no-highlight \
 		--lua-filter ../src/code-includes.lua \
-		-o $@ $<
+		--lua-filter ../src/md-includes.lua \
+		-o $(HTML) $<
+
+test_markdown: $(OG)
+	pandoc \
+		--verbose \
+		-f markdown -t markdown \
+		--lua-filter ../src/code-includes.lua \
+		--lua-filter ../src/md-includes.lua \
+		-o $(MD) $<
+
+test_json: $(OG)
+	pandoc \
+		--verbose \
+		--lua-filter ../src/code-includes.lua \
+		--lua-filter ../src/md-includes.lua \
+		-o $(JSON) $<	
 
 clean:
-	rm $(HTML)
+	rm -f $(HTML)
+	rm -f $(MD)
+	rm -f $(JSON)
 
-.PHONY: clean
+.PHONY: clean test test_markdown test_html test_json
