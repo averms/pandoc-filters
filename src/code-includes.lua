@@ -4,6 +4,7 @@
     This code is licensed under the MIT license (see LICENSE for details)
     Substitues code blocks containing `include` attributes with the included file.
 --]]
+local inspect = require("inspect")
 
 -- helper funcs
 function readit()
