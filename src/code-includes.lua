@@ -1,9 +1,9 @@
 --[[ file: code-includes.lua
 
     Copyright (c) 2018 Aman Verma
-    This code is licensed under the MIT license (see LICENSE for details)
-    If no LICENSE was distributed with this file, see
-    https://github.com/aaether32323/pandoc-filters/raw/master/LICENSE
+    This code is licensed under the MIT license
+    See https://github.com/aaether32323/pandoc-filters/raw/master/LICENSE
+
     Substitues code blocks containing `file` attributes with the file inside.
 --]]
 local inspect = require("inspect")
