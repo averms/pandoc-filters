@@ -1,8 +1,8 @@
 --[[ file: md-includes.lua
 
-    Copyright (c) 2018 Aman Verma
     This code is licensed under the MIT license
-    See https://github.com/aaether32323/pandoc-filters/raw/master/LICENSE for details.
+    You should have received a copy of the license along with this software.
+    If not, see <https://opensource.org/licenses/MIT>
 
     Substitues image links to *.md with the contents of the file, rendered.
     Abuses the link element. Uses it as long as it has an attribute of file=anything.

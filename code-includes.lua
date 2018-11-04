@@ -2,7 +2,8 @@
 
     Copyright (c) 2018 Aman Verma
     This code is licensed under the MIT license
-    See https://github.com/aaether32323/pandoc-filters/raw/master/LICENSE
+    You should have received a copy of the license along with this software.
+    If not, see <https://opensource.org/licenses/MIT>
 
     Substitues code blocks containing `file` attributes with the file inside.
 --]]
