@@ -16,15 +16,17 @@ inside the code block. This is useful for a couple of reasons:
 * You can keep code examples in separate directory and keep everything in sync.
 * Large scripts that you don't want to scroll past can be kept in a separate file.
 
-    ~~~{.python file=anything_here}
-    /path/to/file.py
-    ~~~
+```
+~~~{.python file=anything_here}
+/path/to/file.py
+~~~
+```
 
-TODO: include specific lines
+**TODO:** include specific lines
 
 ### `md-includes`
 
-Include content from another file similar to AsciiDoc and ReST. This only works once, so
+Include content from another file just like AsciiDoc and ReST. This only works once, so
 included files can't include other files. **Blank lines are necessary**.
 
     text text.
@@ -33,9 +35,32 @@ included files can't include other files. **Blank lines are necessary**.
 
     text text text.
 
-If you _do_ want to recursively include files, try [PP](https://github.com/CDSoft/pp),
-a generic preprocessor made for pandoc. It offers a lot more than you can do with pure
-filters.
+If you _do_ want to recursively include files, try [m4](https://www.gnu.org/software/m4/m4.html),
+a generic preprocessor. Make sure you change the default quotation marks with `changequote`.
+
+### `standard-code`
+
+Pandoc has great syntax highlighting by default but sometimes you just want to apply your own styling.
+Unfortunately, the default pandoc codeblock output with `--no-highlight` looks like this:
+
+    <pre class="haskell"><code>import System.Environment
+    main = do
+    getArgs >>= print
+    getProgName >>= print
+    getEnvironment >>= print
+    </code></pre>
+
+This is not HTML5 compliant, nor is it compatible with `prism.js` or `highlight.js`. This filter
+makes sure pandoc outputs the correct, html5 compliant syntax:
+
+    <pre><code class="language-haskell">import System.Environment
+    main = do
+    getArgs >>= print
+    getProgName >>= print
+    getEnvironment >>= print
+    </code></pre>
+
+It passes through all #identifiers and .classes that don't match a programming language name.
 
 ## License
 
