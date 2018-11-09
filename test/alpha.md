@@ -20,7 +20,7 @@ and expound the actual teachings of the great explorer of the truth, the
 master-builder of human happiness.
 Here is **test 2 of `code-includes`**:
 
-```{.lua file=no}
+```{.lua .memes .others file=no}
    
 test.lua    
    
@@ -28,7 +28,7 @@ test.lua
 
 Here is **Test 3 of `code-includes`**:
 
-```{.aa #file}
+```{#file}
 yes
 // This should be kept
 >>>
@@ -58,7 +58,7 @@ some_python = " "
 some_python > 0
 ```
 
-```rust
+```rustlangy
 fn main() {
     println!("Hello World!");
 }
