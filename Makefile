@@ -1,13 +1,15 @@
-FILTERS := code-includes.lua md-includes.lua
+FILTERS := ${wildcard *.lua}
 
-all: $(FILTERS)
+all:
+	@$(MAKE) -Csrc
 
-$(FILTERS): %.lua: src/%.lua
-	@# remove any debugging
-	sed '/require("inspect/d' $< > $@
+test: $(FILTERS)
+	@$(MAKE) -Ctest test
+
+copy:
+	cp $(FILTERS) ~/.pandoc/filters/
 
 clean:
-	rm $(FILTERS)
+	@$(MAKE) -Csrc clean
 
-debug: ; $(info var is [$(FILTERS)])
-.PHONY: all
+.PHONY: clean
