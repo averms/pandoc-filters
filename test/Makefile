@@ -7,7 +7,7 @@ JSON := out/out.json
 
 test: test_html test_markdown test_json
 
-test_html: $(OG)
+test_html: $(OG) build
 	pandoc \
 		--verbose \
 		--no-highlight \
@@ -32,6 +32,9 @@ test_json: $(OG)
 		--lua-filter ../md-includes.lua \
 		--lua-filter ../standard-code.lua \
 		-o $(JSON) $<	
+
+build:
+	@$(MAKE) -C..
 
 clean:
 	rm -f $(HTML)
