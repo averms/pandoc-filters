@@ -12,7 +12,7 @@ test_html: $(OG) build
 		--verbose \
 		--no-highlight \
 		--lua-filter ../code-includes.lua \
-		--lua-filter ../md-includes.lua \
+		--lua-filter ../transclude.lua \
 		--lua-filter ../standard-code.lua \
 		-o $(HTML) $<
 
@@ -21,7 +21,7 @@ test_markdown: $(OG)
 		--verbose \
 		-f markdown -t markdown \
 		--lua-filter ../code-includes.lua \
-		--lua-filter ../md-includes.lua \
+		--lua-filter ../transclude.lua \
 		--lua-filter ../standard-code.lua \
 		-o $(MD) $<
 
@@ -29,7 +29,7 @@ test_json: $(OG)
 	pandoc \
 		--verbose \
 		--lua-filter ../code-includes.lua \
-		--lua-filter ../md-includes.lua \
+		--lua-filter ../transclude.lua \
 		--lua-filter ../standard-code.lua \
 		-o $(JSON) $<	
 
