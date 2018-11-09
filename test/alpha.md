@@ -31,18 +31,36 @@ Here is **Test 3 of `code-includes`**:
 ```{.aa #file}
 yes
 // This should be kept
-
+>>>
 please don't fold it
 nope.
 ```
 
 ## For `md-includes`
 
-fdsafsadflkj. **Test 1 of `md-includes`**:
+**Tests 1 and 2 of `md-includes`**:
 
-![test](../README.md){file=yes}
+He quickly deduced our goal -- ship a quality beta
+-- but he also quickly discerned that we had no idea about the quality of the product because of our pile of untriaged bugs.
 
-**Test 2 of `md-includes`**:
+____
 
-![this shouldn't work](https://upload.wikimedia.org/wikipedia/commons/b/bd/Test.svg)
+![beta](beta.md){file=yes}
+
+**Test 3 of `md-includes`**:
+
+![this should be an image](https://upload.wikimedia.org/wikipedia/commons/b/bd/Test.svg)
+
+## For `standard-code`
+
+```python
+some_python = " "
+some_python > 0
+```
+
+```rust
+fn main() {
+    println!("Hello World!");
+}
+```
 

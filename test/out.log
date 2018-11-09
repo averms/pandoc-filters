@@ -1,0 +1,144 @@
+pandoc \
+		--verbose \
+		--no-highlight \
+		--lua-filter ../src/code-includes.lua \
+		--lua-filter ../src/md-includes.lua \
+		-o out/out.html alpha.md
+{
+  {
+    c = {
+      3,
+      {
+        "here-is-a-definition-from-file-gamma",
+        {
+        },
+        {
+        }
+      },
+      {
+        {
+          c = "Here"
+        },
+        {
+        },
+        {
+          c = "is"
+        },
+        {
+        },
+        {
+          c = "a"
+        },
+        {
+        },
+        {
+          c = "definition"
+        },
+        {
+        },
+        {
+          c = "from"
+        },
+        {
+        },
+        {
+          c = "file"
+        },
+        {
+        },
+        {
+          c = {
+            {
+              "",
+              {
+              },
+              {
+              }
+            },
+            "gamma"
+          }
+        },
+        {
+          c = ":"
+        }
+      }
+    }
+  },
+  {
+    c = {
+      {
+        {
+          {
+            c = "Gamma"
+          }
+        },
+        {
+          {
+            {
+              c = {
+                {
+                  c = "a"
+                },
+                {
+                },
+                {
+                  c = "penetrating"
+                },
+                {
+                },
+                {
+                  c = "electromagnetic"
+                },
+                {
+                },
+                {
+                  c = "radiation"
+                },
+                {
+                },
+                {
+                  c = "arising"
+                },
+                {
+                },
+                {
+                  c = "from"
+                },
+                {
+                },
+                {
+                  c = "the"
+                },
+                {
+                },
+                {
+                  c = "radioactive"
+                },
+                {
+                },
+                {
+                  c = "decay"
+                },
+                {
+                },
+                {
+                  c = "of"
+                },
+                {
+                },
+                {
+                  c = "atomic"
+                },
+                {
+                },
+                {
+                  c = "nuclei."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

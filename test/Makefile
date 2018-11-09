@@ -1,10 +1,9 @@
 # test
 
-OG := test.md
-AUX := test.lua
-HTML := out.html
-MD := out.markdown
-JSON := out.json
+OG := alpha.md
+HTML := out/out.html
+MD := out/out.markdown
+JSON := out/out.json
 
 test: test_html test_markdown test_json
 
@@ -12,23 +11,26 @@ test_html: $(OG)
 	pandoc \
 		--verbose \
 		--no-highlight \
-		--lua-filter ../src/code-includes.lua \
-		--lua-filter ../src/md-includes.lua \
+		--lua-filter ../code-includes.lua \
+		--lua-filter ../md-includes.lua \
+		--lua-filter ../standard-code.lua \
 		-o $(HTML) $<
 
 test_markdown: $(OG)
 	pandoc \
 		--verbose \
 		-f markdown -t markdown \
-		--lua-filter ../src/code-includes.lua \
-		--lua-filter ../src/md-includes.lua \
+		--lua-filter ../code-includes.lua \
+		--lua-filter ../md-includes.lua \
+		--lua-filter ../standard-code.lua \
 		-o $(MD) $<
 
 test_json: $(OG)
 	pandoc \
 		--verbose \
-		--lua-filter ../src/code-includes.lua \
-		--lua-filter ../src/md-includes.lua \
+		--lua-filter ../code-includes.lua \
+		--lua-filter ../md-includes.lua \
+		--lua-filter ../standard-code.lua \
 		-o $(JSON) $<	
 
 clean:

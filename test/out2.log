@@ -1,0 +1,7 @@
+pandoc \
+		--verbose \
+		--no-highlight \
+		--lua-filter ../src/code-includes.lua \
+		--lua-filter ../src/md-includes.lua \
+		-o out/out.html alpha.md
+nil	not a table
