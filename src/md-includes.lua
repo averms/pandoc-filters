@@ -1,6 +1,7 @@
 --[[ file: md-includes.lua
 
-    m4_include(cr.txt)
+    m4_include(cr.txt)m4_dnl
+
     Substitues image links to a pandoc md file with the contents of the file, rendered.
     Uses it as long as it has an attribute of file=anything.
     But the link element **has** to be inside a Para block, meaning it has to be
