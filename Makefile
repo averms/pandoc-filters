@@ -3,7 +3,7 @@ FILTERS := ${wildcard *.lua}
 all:
 	@$(MAKE) -Csrc
 
-copy:
+copy: all
 	cp $(FILTERS) ~/.pandoc/filters/
 
 clean:
