@@ -1,5 +1,5 @@
 local languages = {
-    '1c',
+    '1c',m4_dnl
     'abnf',
     'accesslog',
     'actionscript',

@@ -11,8 +11,7 @@
 
 
 local languages = {
-    '1c',
-    'abnf',
+    '1c',    'abnf',
     'accesslog',
     'actionscript',
     'ada',
@@ -208,6 +207,28 @@ local function checkClassIsLanguage(name)
     return -1
 end
 
+local function escape(s, in_attribute)
+    -- escape according to html5 rules
+    return s:gsub(
+        "[<>&\"']",
+        function(x)
+            if x == '<' then
+                return '&lt;'
+            elseif x == '>' then
+                return '&gt;'
+            elseif x == '&' then
+                return '&amp;'
+            elseif x == '"' then
+                return '&quot;'
+            elseif x == "'" then
+                return '&#39;'
+            else
+                return x
+            end
+        end
+    )
+end
+
 local function getCodeClass(classes)
     -- check if classes includes a programming language name. Side effect is that it
     -- removes the class that matches from the `classes` table
@@ -258,7 +279,7 @@ return {
             classReg = makeClasses(p.classes)
 
             local pre_code = string.format('<pre%s%s><code%s>%s</code></pre>',
-                id, classReg, classLang, p.text)
+                id, classReg, classLang, escape(p.text))
             return pandoc.RawBlock("html5", pre_code ,"RawBlock")
         end,
 
