@@ -84,7 +84,7 @@ end
 return {
     {
         CodeBlock = function(p)
-            if not FORMAT == "html5" then
+            if FORMAT ~= "html" then
                 return p
             end
 
@@ -94,7 +94,7 @@ return {
 
             local pre_code = string.format('<pre%s%s><code%s>%s</code></pre>',
                 id, classReg, classLang, escape(p.text))
-            return pandoc.RawBlock("html5", pre_code ,"RawBlock")
+            return pandoc.RawBlock("html", pre_code ,"RawBlock")
         end,
 
     }
