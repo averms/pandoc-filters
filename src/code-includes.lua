@@ -20,7 +20,7 @@ end
 return {
     {
         CodeBlock = function(cb)
-            if cb.attributes["file"] then
+            if cb.attributes["inc"] then
                 -- strip all whitespace around the text
                 filename = cb.text:match("^%s*(.-)%s*$")
                 if filename == "" then
