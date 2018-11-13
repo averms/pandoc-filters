@@ -20,6 +20,7 @@ test_markdown: $(OG)
 	pandoc \
 		--verbose \
 		-f markdown -t markdown \
+		--atx-headers \
 		--lua-filter ../transclude.lua \
 		--lua-filter ../code-includes.lua \
 		--lua-filter ../standard-code.lua \
