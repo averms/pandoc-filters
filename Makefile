@@ -9,4 +9,3 @@ copy: all
 clean:
 	@$(MAKE) -Csrc clean
 
-.PHONY: clean

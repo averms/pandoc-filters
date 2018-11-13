@@ -12,10 +12,10 @@
 --]]
 
 local function transclude(p)
-    if #p.content == 1 and p.content[1].t == "Image" then
-        local image = p.content[1]
-        if image.attributes["file"] then
-            io.input(image.src)
+    if #p.content == 1 and p.content[1].t == "Span" then
+        local span = p.content[1]
+        if span.attributes["inc"] then
+            io.input(pandoc.utils.stringify(span.content))
             -- let pandoc parse the file, wrap the content in a Div
             local parsed_div = pandoc.Div(pandoc.read(io.read("all")).blocks)
             return pandoc.walk_block(parsed_div, {Para = transclude}).content

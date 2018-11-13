@@ -6,7 +6,7 @@ them faster than filters written in any other language][1]. Copy them into
 
 [1]: https://pandoc.org/lua-filters.html
 
-## Descriptions
+## Usage
 
 ### `code-includes`
 
@@ -17,28 +17,34 @@ inside the code block. This is useful for a couple of reasons:
 * Large scripts that you don't want to scroll past can be kept in a separate file.
 
 ```
-~~~{.python file=anything_here}
+~~~{.python inc=anything}
 /path/to/file.py
 ~~~
 ```
 
 **TODO:** include specific lines
 
-### `md-includes`
+### `transclude`
 
-Include content from another file just like AsciiDoc and ReST. This only works once, so
-included files can't include other files. **Blank lines are necessary**.
+Include content from another file just like AsciiDoc and ReST. Is recursive
+and works with spaces in file names.
+**Blank lines are necessary.**
 
     text text.
 
-    ![anything here doesn't make it](/path/to/file.md){file=yes}
+    [/path/to/file.md]{inc=y}
 
     text text text.
 
-If you _do_ want to recursively include files, try [m4](https://www.gnu.org/software/m4/m4.html),
+Note that this requires the `bracketed_spans` extension to be turned on
+(it should be on by default).
+This doesn't resolve internal references, like footnotes between the files.
+If you _do_ want that to work, try [m4](https://www.gnu.org/software/m4/m4.html),
 a generic preprocessor. Make sure you change the default quotation marks with `changequote`.
 
 ### `standard-code`
+
+_Only for html output_
 
 Pandoc has great syntax highlighting by default but sometimes you just want to apply your own styling.
 Unfortunately, the default pandoc codeblock output with `--no-highlight` looks like this:
@@ -50,8 +56,8 @@ Unfortunately, the default pandoc codeblock output with `--no-highlight` looks l
     getEnvironment >>= print
     </code></pre>
 
-This is not HTML5 compliant, nor is it compatible with `prism.js` or `highlight.js`. This filter
-makes sure pandoc outputs the correct, html5 compliant syntax:
+The above is not what the [W3C recommends][2], nor is it compatible with `prism.js`. This filter
+makes sure pandoc outputs the recommended syntax:
 
     <pre><code class="language-haskell">import System.Environment
     main = do
@@ -61,6 +67,8 @@ makes sure pandoc outputs the correct, html5 compliant syntax:
     </code></pre>
 
 It passes through all #identifiers and .classes that don't match a programming language name.
+
+[2]: https://www.w3.org/TR/html5/text-level-semantics.html#the-code-element
 
 ## License
 
