@@ -5,10 +5,10 @@ HTML := out/out.html
 MD := out/out.txt
 JSON := out/out.json
 
-test: test_html test_markdown test_json
+test: build test_html test_markdown test_json find_diffs
 
-test_html: $(OG) build
-	pandoc \
+test_html: $(OG)
+	@pandoc \
 		--verbose \
 		--no-highlight \
 		--lua-filter ../transclude.lua \
@@ -17,7 +17,7 @@ test_html: $(OG) build
 		-o $(HTML) $<
 
 test_markdown: $(OG)
-	pandoc \
+	@pandoc \
 		--verbose \
 		-f markdown -t markdown \
 		--atx-headers \
@@ -27,7 +27,7 @@ test_markdown: $(OG)
 		-o $(MD) $<
 
 test_json: $(OG)
-	pandoc \
+	@pandoc \
 		--verbose \
 		--lua-filter ../transclude.lua \
 		--lua-filter ../code-includes.lua \
@@ -36,6 +36,9 @@ test_json: $(OG)
 
 build:
 	@$(MAKE) -C..
+
+find_diffs:
+	@cd out && ./find_diffs.sh
 
 clean:
 	rm -f $(HTML)
