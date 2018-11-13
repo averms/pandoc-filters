@@ -1,11 +1,10 @@
-### Here is a dlist from file `beta`:
+### Here is the content from file `beta`:
 
 Beta
 :   (computing) The phase of development after alpha testing and before launch,
     in which software, while not complete, has been released to potential users for testing.
 
-Gamma rays are ionizing radiation and are thus biologically hazardous.
-Due to their high penetration power,
-they can damage bone marrow and internal organs.
+He quickly deduced our goal -- ship a quality beta
+-- but he also quickly discerned that we had no idea about the quality of the product because of our pile of untriaged bugs.
 
-![gamma](gamma.md){file=yes}
+[gamma.md]{inc=yes}

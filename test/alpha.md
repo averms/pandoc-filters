@@ -7,10 +7,10 @@ ut labore et dolore magna aliqua. Lectus vestibulum mattis ullamcorper velit sed
 vi.
 Here is **test 1 of `code-includes`**:
 
-```{.lua file=}
+```{.lua inc=}
+    
 test.lua   
  
-  
    
 ```
 
@@ -20,10 +20,8 @@ and expound the actual teachings of the great explorer of the truth, the
 master-builder of human happiness.
 Here is **test 2 of `code-includes`**:
 
-```{.lua .memes .others file=no}
-   
-test.lua    
-   
+```{.lua .memes .others inc=no}
+test.lua
 ```
 
 Here is **Test 3 of `code-includes`**:
@@ -36,18 +34,15 @@ please don't fold it
 nope.
 ```
 
-## For `md-includes`
-
-**Tests 1 and 2 of `md-includes`**:
-
-He quickly deduced our goal -- ship a quality beta
--- but he also quickly discerned that we had no idea about the quality of the product because of our pile of untriaged bugs.
+## For `transclude`
 
 ____
 
-![beta](beta.md){file=yes}
+[beta.md]{inc=y}
 
-**Test 3 of `md-includes`**:
+----
+
+**Another test of `transclude:`**
 
 ![this should be an image](https://upload.wikimedia.org/wikipedia/commons/b/bd/Test.svg)
 

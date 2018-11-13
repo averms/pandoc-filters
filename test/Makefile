@@ -2,7 +2,7 @@
 
 OG := alpha.md
 HTML := out/out.html
-MD := out/out.markdown
+MD := out/out.txt
 JSON := out/out.json
 
 test: test_html test_markdown test_json
@@ -11,8 +11,8 @@ test_html: $(OG) build
 	pandoc \
 		--verbose \
 		--no-highlight \
-		--lua-filter ../code-includes.lua \
 		--lua-filter ../transclude.lua \
+		--lua-filter ../code-includes.lua \
 		--lua-filter ../standard-code.lua \
 		-o $(HTML) $<
 
@@ -20,16 +20,16 @@ test_markdown: $(OG)
 	pandoc \
 		--verbose \
 		-f markdown -t markdown \
-		--lua-filter ../code-includes.lua \
 		--lua-filter ../transclude.lua \
+		--lua-filter ../code-includes.lua \
 		--lua-filter ../standard-code.lua \
 		-o $(MD) $<
 
 test_json: $(OG)
 	pandoc \
 		--verbose \
-		--lua-filter ../code-includes.lua \
 		--lua-filter ../transclude.lua \
+		--lua-filter ../code-includes.lua \
 		--lua-filter ../standard-code.lua \
 		-o $(JSON) $<	
 
