@@ -2,7 +2,7 @@
 
     m4_include(cr.txt)m4_dnl
 
-    Substitues code blocks containing `file` attributes with the file inside.
+    Substitues code blocks containing `inc` attributes with the file inside.
 --]]
 local pr = require("pl.pretty")
 

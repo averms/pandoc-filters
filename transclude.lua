@@ -5,12 +5,13 @@
     You should have received a copy of the license along with this software.
     If not, see <https://opensource.org/licenses/MIT>
 
-    Substitues image links to a pandoc md file with the contents of the file, rendered.
-    Uses it as long as it has an attribute of file=anything.
-    But the link element **has** to be inside a Para block, meaning it has to be
+    Substitues span containing a file name with the contents of the file, rendered.
+    But the span element has to be inside a Para block, meaning it has to be
     surrounded by blank lines.
 --]]
 
+-- Function needs to have a name so that recursion can work.
+-- That is why it is outside the returned table.
 local function transclude(p)
     if #p.content == 1 and p.content[1].t == "Span" then
         local span = p.content[1]
@@ -22,6 +23,7 @@ local function transclude(p)
         end
     end
 end
+
 return {
     {
         Para = function(p)

@@ -1,5 +1,7 @@
+m4_patsubst(
+{{m4_dnl
 local languages = {
-    '1c',m4_dnl
+    '1c',
     'abnf',
     'accesslog',
     'actionscript',
@@ -182,5 +184,7 @@ local languages = {
     'xml',
     'xquery',
     'yaml',
-    'zephir',
+    'zephir',m4_dnl
 }
+}}, {{
+    }}, {{}})
