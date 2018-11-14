@@ -38,7 +38,7 @@ build:
 	@$(MAKE) -C..
 
 find_diffs:
-	@cd out && ./find_diffs.sh
+	@cd out && bash find_diffs.sh
 
 clean:
 	rm -f $(HTML)
