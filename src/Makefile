@@ -14,6 +14,7 @@ $(FILTERS): ../%.lua: %.lua
 clean:
 	rm $(FILTERS)
 
-debug: ; $(info var is [$(FILTERS)])
+debug:
+	@echo '$(SRC)'
 
 .PHONY: clean copy

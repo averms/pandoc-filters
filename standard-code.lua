@@ -1,4 +1,4 @@
---[[ file: standard-code.lua
+--[[ standard-code.lua
    
     Copyright (c) 2018 Aman Verma
     This code is licensed under the MIT license

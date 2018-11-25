@@ -1,4 +1,4 @@
---[[ file: code-includes.lua
+--[[ code-includes.lua
 
     m4_include(cr.txt)m4_dnl
 

@@ -1,4 +1,4 @@
---[[ file: transclude.lua
+--[[ transclude.lua
 
     m4_include(cr.txt)m4_dnl
 

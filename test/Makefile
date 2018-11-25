@@ -1,5 +1,5 @@
-# test
-
+OLDSCHOOL := oldschool-readme.md
+PLAIN := out/plain.txt
 OG := alpha.md
 HTML := out/out.html
 MD := out/out.txt
@@ -34,6 +34,13 @@ test_json: $(OG)
 		--lua-filter ../standard-code.lua \
 		-o $(JSON) $<	
 
+test_plain: $(OLDSCHOOL) build
+	@pandoc \
+		--verbose \
+		-s -t plain \
+		--lua-filter ../src/oldschool-readme.lua \
+		$<
+
 build:
 	@$(MAKE) -C..
 
@@ -45,4 +52,4 @@ clean:
 	rm -f $(MD)
 	rm -f $(JSON)
 
-.PHONY: clean test test_markdown test_html test_json
+.PHONY: clean test_markdown test_html test_json
