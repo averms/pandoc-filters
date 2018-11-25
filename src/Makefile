@@ -9,7 +9,7 @@ test: all
 $(FILTERS): ../%.lua: %.lua
 	@# remove any debugging
 	@# add copyright and stuff
-	m4 -P ../.m4 "$<" | sed '/= require("pl/d' > $@
+	m4 -P ../.m4 "$<" | sed '/= require(.pl/d' > $@
 
 clean:
 	rm $(FILTERS)
