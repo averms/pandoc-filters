@@ -1,100 +1,27 @@
-## For `code-includes`
+LONG TITLE OVER MULTIPLE LINES XD
+#################################
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Lectus vestibulum
-mattis ullamcorper velit sed. Sagittis vi. Here is **test 1 of
-`code-includes`**:
+normalize and `change code things` for this header
+==================================================
 
-``` {.lua inc=""}
--- Test file, to be included with code-includes
-a = {}
-a[1] = 2
-print(a[1] < 4)
-```
+normalize this 
+~~~~~~~~~~~~~~~
 
-But I must explain to you how all this mistaken idea of denouncing
-pleasure and praising pain was born and I will give you a complete
-account of the system, and expound the actual teachings of the great
-explorer of the truth, the master-builder of human happiness. Here is
-**test 2 of `code-includes`**:
+just do stuff to `this` header
+------------------------------
 
-``` {.lua .memes .others inc="no"}
--- Test file, to be included with code-includes
-a = {}
-a[1] = 2
-print(a[1] < 4)
-```
+More [links] to test<https://example.com>.
 
-Here is **Test 3 of `code-includes`**:
+Another <https://example.com>
 
-``` {#file}
-yes
-// This should be kept
->>>
-please don't fold it
-nope.
-```
+Term 1
+    Definition of term 1.
 
-## For `transclude`
+-   olist
+-   olist
+-   olist
 
-------------------------------------------------------------------------
+  header
+  ~~~~~~
 
-### Here is the content from file `beta`:
-
-Beta
-:   (computing) The phase of development after alpha testing and before
-    launch, in which software, while not complete, has been released to
-    potential users for testing.
-
-He quickly deduced our goal -- ship a quality beta -- but he also
-quickly discerned that we had no idea about the quality of the product
-because of our pile of untriaged bugs.
-
-### Here is the content from file `gamma`:
-
-Gamma
-:   a penetrating *electromagnetic* radiation arising from the
-    radioactive decay of atomic nuclei.
-
-Gamma rays are ionizing radiation and are thus biologically hazardous.
-Due to their high penetration power, they can damage bone marrow and
-internal organs.
-
-### Here is the content from file `the delta`:
-
-Delta
-:   A river delta is a landform that forms from deposition of sediment
-
-A river delta is formed at the mouth of a river where the river deposits
-the sediment load carried by it and drains into a slower moving or
-static body of water.
-
-Let's also see if `code-includes` still works in the 3rd level of
-including:
-
-``` {.lua inc="y"}
--- Test file, to be included with code-includes
-a = {}
-a[1] = 2
-print(a[1] < 4)
-```
-
-------------------------------------------------------------------------
-
-**Another test of `transclude:`**
-
-![this should be an
-image](https://upload.wikimedia.org/wikipedia/commons/b/bd/Test.svg)
-
-## For `standard-code`
-
-``` {.python}
-some_python = " "
-some_python > 0
-```
-
-``` {.rustlangy}
-fn main() {
-    println!("Hello World!");
-}
-```
+  a block quote end

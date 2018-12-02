@@ -1,22 +1,24 @@
-OLDSCHOOL := oldschool-readme.md
-PLAIN := out/plain.txt
-OG := alpha.md
-HTML := out/out.html
-MD := out/out.txt
-JSON := out/out.json
+# oldschool-readme
+OS_SRC := oldschool-readme.md
+OS     := ${OS_SRC:%.md=out/%.txt}
+# standard-code, code-includes, and transclude
+M_SRC  := alpha.md
+M_HTML := ${M_SRC:%.md=out/%.html}
+M_MD   := ${M_SRC:%.md=out/%.pandoc}
+M_JSON := ${M_SRC:%.md=out/%.json}
 
-test: build test_html test_markdown test_json find_diffs
+test: build $(M_HTML) $(M_MD) $(M_JSON) $(OS) find_diffs
 
-test_html: $(OG)
+$(M_HTML): $(M_SRC)
 	@pandoc \
 		--verbose \
 		--no-highlight \
 		--lua-filter ../transclude.lua \
 		--lua-filter ../code-includes.lua \
 		--lua-filter ../standard-code.lua \
-		-o $(HTML) $<
+		-o $(M_HTML) $<
 
-test_markdown: $(OG)
+$(M_MD): $(M_SRC)
 	@pandoc \
 		--verbose \
 		-f markdown -t markdown \
@@ -24,32 +26,37 @@ test_markdown: $(OG)
 		--lua-filter ../transclude.lua \
 		--lua-filter ../code-includes.lua \
 		--lua-filter ../standard-code.lua \
-		-o $(MD) $<
+		-o $(M_MD) $<
 
-test_json: $(OG)
+$(M_JSON): $(M_SRC)
 	@pandoc \
 		--verbose \
 		--lua-filter ../transclude.lua \
 		--lua-filter ../code-includes.lua \
 		--lua-filter ../standard-code.lua \
-		-o $(JSON) $<	
+		-o $(M_JSON) $<	
 
-test_plain: $(OLDSCHOOL) build
+$(OS): $(OS_SRC) build
 	@pandoc \
 		--verbose \
 		-s -t plain \
 		--lua-filter ../src/oldschool-readme.lua \
-		$<
+		-o $(OS) $<
 
 build:
 	@$(MAKE) -C..
 
 find_diffs:
-	@cd out && bash find_diffs.sh
+	@cd out && bash find_diffs.sh "${M_SRC:%.md=%}"
+	@cd out && bash find_diffs.sh "${OS_SRC:%.md=%}"
 
 clean:
-	rm -f $(HTML)
-	rm -f $(MD)
-	rm -f $(JSON)
+	rm -f $(M_HTML)
+	rm -f $(M_MD)
+	rm -f $(M_JSON)
+	rm -f $(OS)
 
-.PHONY: clean test_markdown test_html test_json
+debug:
+	@echo '$(OS)'
+
+.PHONY: clean find_diffs

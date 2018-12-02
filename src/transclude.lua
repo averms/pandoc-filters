@@ -24,8 +24,6 @@ end
 
 return {
     {
-        Para = function(p)
-            return transclude(p)
-        end,
+        Para = transclude
     }
 }

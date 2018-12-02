@@ -8,6 +8,7 @@
     underlines and link targets.
     Insipired by the readmes of bash and opus.
 --]]
+
 local stringify = (require 'pandoc.utils').stringify
 local text = require('text')
 local pr = require('pl.pretty')
