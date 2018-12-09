@@ -1,5 +1,5 @@
 # oldschool-readme
-OS_SRC := oldschool-readme.md
+OS_SRC := oldschool.md
 OS     := ${OS_SRC:%.md=out/%.txt}
 # standard-code, code-includes, and transclude
 M_SRC  := alpha.md
@@ -9,7 +9,7 @@ M_JSON := ${M_SRC:%.md=out/%.json}
 
 test: build $(M_HTML) $(M_MD) $(M_JSON) $(OS) find_diffs
 
-$(M_HTML): $(M_SRC)
+$(M_HTML): $(M_SRC) build
 	@pandoc \
 		--verbose \
 		--no-highlight \
@@ -18,7 +18,7 @@ $(M_HTML): $(M_SRC)
 		--lua-filter ../standard-code.lua \
 		-o $(M_HTML) $<
 
-$(M_MD): $(M_SRC)
+$(M_MD): $(M_SRC) build
 	@pandoc \
 		--verbose \
 		-f markdown -t markdown \
@@ -28,7 +28,7 @@ $(M_MD): $(M_SRC)
 		--lua-filter ../standard-code.lua \
 		-o $(M_MD) $<
 
-$(M_JSON): $(M_SRC)
+$(M_JSON): $(M_SRC) build
 	@pandoc \
 		--verbose \
 		--lua-filter ../transclude.lua \
@@ -40,11 +40,12 @@ $(OS): $(OS_SRC) build
 	@pandoc \
 		--verbose \
 		-s -t plain \
-		--lua-filter ../src/oldschool-readme.lua \
+		--lua-filter ../oldschool.lua \
 		-o $(OS) $<
 
 build:
 	@$(MAKE) -C..
+	@echo
 
 find_diffs:
 	@cd out && bash find_diffs.sh "${M_SRC:%.md=%}"

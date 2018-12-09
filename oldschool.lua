@@ -18,7 +18,7 @@ local text = require('text')
 
 
 local function setext(str, under_char)
-    local norm_str = stringify(str)
+    local norm_str = stringify(str):gsub('%s+$', '')
     return norm_str, string.rep(under_char, #norm_str)
 end
 
@@ -29,12 +29,8 @@ end
 local underchars = {
     [0] = '#',
     [1] = '=',
-    [2] = '~',
-    [3] = '-',
+    [2] = '-',
 }
-
--- tests
--- print(setext('nice', '^'))
 
 return {
     {
@@ -57,11 +53,11 @@ return {
         Header = function(elem)
             if table_in(underchars, elem.level) then
                 local cont, underline = setext(elem.content, underchars[elem.level])
-                plain_header = pandoc.Plain({
+                plain_header = pandoc.Plain{
                     pandoc.RawInline('plain', cont),
                     pandoc.LineBreak(),
                     pandoc.RawInline('plain', underline),
-                })
+                }
                 return plain_header
             end
         end,
