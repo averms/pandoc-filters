@@ -1,4 +1,4 @@
---[[ oldschool-readme
+--[[ oldschool
 
     m4_include(cr.txt)
     

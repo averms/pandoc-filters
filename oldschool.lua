@@ -1,4 +1,4 @@
---[[ oldschool-readme
+--[[ oldschool
 
     Copyright (c) 2018 Aman Verma
     This code is licensed under the MIT license

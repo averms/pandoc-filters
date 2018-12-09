@@ -1,4 +1,4 @@
---[[ tikz.lua
+--[[ tikz
    
     m4_include(cr.txt)m4_dnl
     
