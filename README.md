@@ -70,6 +70,21 @@ It passes through all #identifiers and .classes that don't match a programming l
 
 [2]: https://www.w3.org/TR/html5/text-level-semantics.html#the-code-element
 
+### `oldschool`
+
+Tries to write files in a basic plain format that you might
+use for README that is not meant to be ever rendered.
+Extends pandoc's `plain` output to add some more goodies like header
+underlines and link targets. Use with `-s` if you want:
+
+    pandoc -s -t plain --lua-filter oldschool.lua -o {output} {input}
+
+Insipired by the READMEs of bash and opus.
+
+### `tikz`
+
+In progress...
+
 ## License
 
 Files in this repository are made available under the [MIT License](LICENSE)
