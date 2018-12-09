@@ -22,10 +22,6 @@ local function setext(str, under_char)
     return norm_str, string.rep(under_char, #norm_str)
 end
 
-local function table_in(t, k)
-    return t[k] ~= nil
-end
-
 local underchars = {
     [0] = '#',
     [1] = '=',
@@ -51,7 +47,7 @@ return {
         end,
 
         Header = function(elem)
-            if table_in(underchars, elem.level) then
+            if underchars[elem.level] then
                 local cont, underline = setext(elem.content, underchars[elem.level])
                 plain_header = pandoc.Plain{
                     pandoc.RawInline('plain', cont),
@@ -64,11 +60,11 @@ return {
 
         Meta = function(m)
             local title, underline = setext(m.title, underchars[0])
-            m.title = pandoc.MetaInlines({
+            m.title = pandoc.MetaInlines{
                 pandoc.RawInline('plain', text.upper(title)),
                 pandoc.LineBreak(),
                 pandoc.RawInline('plain', underline),
-            })
+            }
             return m
         end,
     }
