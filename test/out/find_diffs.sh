@@ -1,9 +1,9 @@
-#!/bin/bash
-set -eo pipefail
+#!/bin/sh
+set -e
 
-if [ $# != 1 ]; then
-    echo >&2 "Usage:"
-    echo >&2 "    $0 basename_of_files_to_test"
+if [ $# -ne 1 ]; then
+    printf >&2 "Usage: $0 <basenames>\n\n"
+    printf >&2 "Finds differences between <basename>.* and exp.*\n"
     exit 1
 fi
 
