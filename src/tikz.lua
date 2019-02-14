@@ -1,9 +1,5 @@
---[[ tikz
-   
-    m4_include(cr.txt)m4_dnl
-    
-    Converts code blocks with class = tikz. to png?
---]]
+--- tikz
+-- Converts code blocks with class = tikz. to png?
 
 tex_path = os.tmpname() .. ".tex"
 dvi_path = os.tmpname() .. ".dvi"

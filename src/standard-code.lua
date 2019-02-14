@@ -1,18 +1,13 @@
---[[ standard-code
+--- standard-code
+-- Turns <pre class="*"><code> into <pre><code class="language-*".
+-- Throws away all attributes, so it should come after any filters that use attributes.
 
-m4_include(cr.txt)m4_dnl
-
-Turns <pre class="*"><code> into <pre><code class="language-*".
-Throws away all attributes, so it should come after any filters that use attributes.
---]]
-
-local pr = require("pl.pretty")
+local pr = require('pl.pretty')
 
 m4_include(languages.txt)m4_dnl
 
 local function checkClassIsLanguage(name)
-	-- name: string
-	-- returns: index of the programming language if found or -1 if not found.
+	-- returns index of the programming language if found or -1 if not found.
 	for i, val in ipairs(languages) do
 		if val == name then
 			return i
@@ -24,7 +19,7 @@ end
 local function escape(s, in_attribute)
 	-- escape according to html5 rules
 	return s:gsub(
-	"[<>&\"']",
+	'[<>&"\']',
 	function(x)
 		if x == '<' then
 			return '&lt;'
@@ -46,7 +41,6 @@ end
 local function getCodeClass(classes)
 	-- check if classes includes a programming language name. Side effect is that it
 	-- removes the class that matches from the `classes` table
-	-- classes: table[string]
 	-- returns: Valid class attr using first match (with a space at beginning).
 	--          or empty string if no classes match a programming language name.
 	local classIndex = -1
@@ -57,34 +51,32 @@ local function getCodeClass(classes)
 			return ' class="language-' .. table.remove(classes, i) .. '"'
 		end
 	end
-	return ""
+	return ''
 end
 
 local function makeIdentifier(ident)
-	-- ident: string
 	-- returns: valid id attr (with a space at the beginning) OR empty string
 	if #ident ~= 0 then
 		return ' id="'.. ident .. '"'
 	else
-		return ""
+		return ''
 	end
 end
 
 local function makeClasses(classes)
-	-- classes: table
-	-- returns: valid class attr with classes separated by spaces (with a space at the beginning) 
-	--          OR empty string.
+  -- returns valid class attr with classes separated by spaces (with a space at
+  -- the beginning) OR empty string.
 	if #classes ~= 0 then
 		return ' class="' .. table.concat(classes, " ") .. '"'
 	else
-		return ""
+		return ''
 	end
 end
 
 return {
 	{
 		CodeBlock = function(p)
-			if FORMAT ~= "html" then
+			if FORMAT ~= 'html' then
 				return p
 			end
 
@@ -92,9 +84,10 @@ return {
 			classLang = getCodeClass(p.classes)
 			classReg = makeClasses(p.classes)
 
-			local pre_code = string.format('<pre%s%s><code%s>%s</code></pre>',
-			id, classReg, classLang, escape(p.text))
-			return pandoc.RawBlock("html", pre_code ,"RawBlock")
+			local pre_code = string.format(
+        '<pre%s%s><code%s>%s</code></pre>', id, classReg, classLang, escape(p.text)
+      )
+			return pandoc.RawBlock('html', pre_code ,'RawBlock')
 		end,
 
 	}

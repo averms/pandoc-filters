@@ -1,18 +1,13 @@
---[[ oldschool
-
-    m4_include(cr.txt)
-    
-    This filter tries to write files in a basic plain format that you might
-    use for README that is not meant to be ever rendered.
-    Extends pandoc's `plain` output to add some more goodies like header
-    underlines and link targets.
-    Insipired by the readmes of bash and opus.
---]]
+--- oldschool
+-- This filter tries to write files in a basic plain format that you might
+-- use for README that is not meant to be ever rendered.
+-- Extends pandoc's `plain` output to add some more goodies like header
+-- underlines and link targets.
+-- Insipired by the readmes of bash and opus.
 
 local stringify = (require 'pandoc.utils').stringify
 local text = require('text')
 local pr = require('pl.pretty')
-
 
 local function setext(str, under_char)
     local norm_str = stringify(str):gsub('%s+$', '')
