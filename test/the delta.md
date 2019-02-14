@@ -7,6 +7,6 @@ A river delta is formed at the mouth of a river where the river deposits the sed
 
 Let's also see if `code-includes` still works in the 3rd level of including:
 
-```{.lua inc=y}
-test.lua
+```{.rust inc=y}
+test.rs   
 ```

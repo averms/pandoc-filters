@@ -4,7 +4,7 @@ OS     := ${OS_SRC:%.md=out/%.txt}
 # standard-code, code-includes, and transclude
 M_SRC  := alpha.md
 M_HTML := ${M_SRC:%.md=out/%.html}
-M_MD   := ${M_SRC:%.md=out/%.pandoc}
+M_MD   := ${M_SRC:%.md=out/%.txt}
 M_JSON := ${M_SRC:%.md=out/%.json}
 
 test: build $(M_HTML) $(M_MD) $(M_JSON) $(OS) find_diffs
@@ -12,6 +12,7 @@ test: build $(M_HTML) $(M_MD) $(M_JSON) $(OS) find_diffs
 $(M_HTML): $(M_SRC) build
 	@pandoc \
 		--verbose \
+		-f markdown -t html \
 		--no-highlight \
 		--lua-filter ../dist/transclude.lua \
 		--lua-filter ../dist/code-includes.lua \
@@ -31,6 +32,7 @@ $(M_MD): $(M_SRC) build
 $(M_JSON): $(M_SRC) build
 	@pandoc \
 		--verbose \
+		-f markdown -t json \
 		--lua-filter ../dist/transclude.lua \
 		--lua-filter ../dist/code-includes.lua \
 		--lua-filter ../dist/standard-code.lua \
@@ -44,7 +46,7 @@ $(OS): $(OS_SRC) build
 		-o $(OS) $<
 
 build:
-	@$(MAKE) -C..
+	$(MAKE) -C..
 
 find_diffs:
 	@cd out && bash find_diffs.sh "${M_SRC:%.md=%}"
@@ -59,4 +61,4 @@ clean:
 debug:
 	@echo '$(OS)'
 
-.PHONY: clean find_diffs
+.PHONY: clean find_diffs debug build test

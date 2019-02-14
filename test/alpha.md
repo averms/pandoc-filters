@@ -7,9 +7,9 @@ ut labore et dolore magna aliqua. Lectus vestibulum mattis ullamcorper velit sed
 vi.
 Here is **test 1 of `code-includes`**:
 
-```{.lua inc=}
+```{.rust inc=}
     
-test.lua   
+test.rs   
  
    
 ```
@@ -20,8 +20,8 @@ and expound the actual teachings of the great explorer of the truth, the
 master-builder of human happiness.
 Here is **test 2 of `code-includes`**:
 
-```{.lua .memes .others inc=no}
-test.lua
+```{.rust .memes .others inc=no}
+test.rs
 ```
 
 Here is **Test 3 of `code-includes`**:
@@ -53,9 +53,9 @@ some_python = " "
 some_python > 0
 ```
 
-```rustlangy
-fn main() {
-    println!("Hello World!");
+```notreallang
+fun main() {
+    Sys.Out.Println("Hello World!");
 }
 ```
 
