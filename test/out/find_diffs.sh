@@ -7,10 +7,10 @@ if [ $# -ne 1 ]; then
     exit 1
 fi
 
-diff --strip-trailing-cr -u "exp.$1.txt" "$1.txt"
+diff --strip-trailing-cr -u "$1.exp.txt" "$1.txt"
 if [ "$1" != "oldschool" ]; then
-    diff --strip-trailing-cr -u "exp.$1.html" "$1.html"
-    diff --strip-trailing-cr -u "exp.$1.json" "$1.json"
+    diff --strip-trailing-cr -u "$1.exp.html" "$1.html"
+    diff --strip-trailing-cr -u "$1.exp.json" "$1.json"
 fi
 
 echo "Diffs successfully computed for $1"
