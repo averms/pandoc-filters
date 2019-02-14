@@ -9,9 +9,12 @@ $(outs): dist/%.lua : src/%.lua
 	m4 -Isrc -P .m4 $< | sed '/= require(.pl/d' > $@
 
 test:
+	@make -Ctest
 
 copy: all
 	cp $(outs) ~/.pandoc/filters/
 
 clean:
 	$(RM) dist/*.lua
+
+.PHONY: clean copy test all
