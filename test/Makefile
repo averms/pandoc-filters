@@ -1,4 +1,4 @@
-# oldschool-readme
+# oldschool
 OS_SRC := oldschool.md
 OS     := ${OS_SRC:%.md=out/%.txt}
 # standard-code, code-includes, and transclude
@@ -13,9 +13,9 @@ $(M_HTML): $(M_SRC) build
 	@pandoc \
 		--verbose \
 		--no-highlight \
-		--lua-filter ../transclude.lua \
-		--lua-filter ../code-includes.lua \
-		--lua-filter ../standard-code.lua \
+		--lua-filter ../dist/transclude.lua \
+		--lua-filter ../dist/code-includes.lua \
+		--lua-filter ../dist/standard-code.lua \
 		-o $(M_HTML) $<
 
 $(M_MD): $(M_SRC) build
@@ -23,29 +23,28 @@ $(M_MD): $(M_SRC) build
 		--verbose \
 		-f markdown -t markdown \
 		--atx-headers \
-		--lua-filter ../transclude.lua \
-		--lua-filter ../code-includes.lua \
-		--lua-filter ../standard-code.lua \
+		--lua-filter ../dist/transclude.lua \
+		--lua-filter ../dist/code-includes.lua \
+		--lua-filter ../dist/standard-code.lua \
 		-o $(M_MD) $<
 
 $(M_JSON): $(M_SRC) build
 	@pandoc \
 		--verbose \
-		--lua-filter ../transclude.lua \
-		--lua-filter ../code-includes.lua \
-		--lua-filter ../standard-code.lua \
+		--lua-filter ../dist/transclude.lua \
+		--lua-filter ../dist/code-includes.lua \
+		--lua-filter ../dist/standard-code.lua \
 		-o $(M_JSON) $<	
 
 $(OS): $(OS_SRC) build
 	@pandoc \
 		--verbose \
 		-s -t plain \
-		--lua-filter ../oldschool.lua \
+		--lua-filter ../dist/oldschool.lua \
 		-o $(OS) $<
 
 build:
 	@$(MAKE) -C..
-	@echo
 
 find_diffs:
 	@cd out && bash find_diffs.sh "${M_SRC:%.md=%}"

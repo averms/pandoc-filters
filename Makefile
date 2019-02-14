@@ -1,11 +1,17 @@
-FILTERS := ${wildcard *.lua}
+srcs := $(wildcard src/*.lua)
+outs := ${srcs:src/%.lua=dist/%.lua}
 
-all:
-	@$(MAKE) -Csrc
+all: $(outs)
+
+$(outs): dist/%.lua : src/%.lua
+	@# remove any debugging
+	@# add languages.txt
+	m4 -Isrc -P .m4 $< | sed '/= require(.pl/d' > $@
+
+test:
 
 copy: all
-	cp $(FILTERS) ~/.pandoc/filters/
+	cp $(outs) ~/.pandoc/filters/
 
 clean:
-	@$(MAKE) -Csrc clean
-
+	$(RM) dist/*.lua
