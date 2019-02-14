@@ -1,8 +1,9 @@
 # Pandoc filters
 
 A collection of pandoc filters that I have made. They are written in lua,
-[which makes them faster than filters written in any other language][1]. Copy
-them into `$HOME/.pandoc/filters`. Use them with `--lua-filter`.
+[which makes them faster than filters written in any other language][1].
+Copy from the `dist` folder into into `$HOME/.pandoc/filters`. Use them with
+`--lua-filter`.
 
 [1]: https://pandoc.org/lua-filters.html
 
@@ -17,7 +18,7 @@ inside the code block. This is useful for a couple of reasons:
 - Large scripts that you don't want to scroll past can be kept in a separate file.
 
 ```
-~~~{.python inc=anything}
+~~~{.python inc=yes}
 /path/to/file.py
 ~~~
 ```
@@ -31,7 +32,7 @@ works with spaces in file names. **Note the blank lines:**
 
     text text.
 
-    [/path/to/file.md]{inc=y}
+    [/path/to/file.md]{inc=yes}
 
     text text text.
 
@@ -42,9 +43,7 @@ footnotes between the files.
 If you _do_ want that to work, try [m4](https://www.gnu.org/software/m4/m4.html),
 a generic preprocessor. Make sure you change the default quotation marks with `changequote`.
 
-### standard-code
-
-_Only for html output_
+### standard-code (html output only)
 
 Pandoc has great syntax highlighting by default but sometimes you just want to
 apply your own styling. Unfortunately, the default pandoc codeblock output with
@@ -63,7 +62,7 @@ language name.
 [2]: https://www.w3.org/TR/html5/text-level-semantics.html#the-code-element
 [3]: https://prismjs.com
 
-### `oldschool`
+### oldschool
 
 Tries to write files in a basic plain format that you might use for README that
 is not meant to be ever rendered. Extends pandoc's `plain` output to add some
@@ -74,10 +73,6 @@ want:
 
 Insipired by the READMEs of bash and opus.
 
-### `tikz`
-
-In progress...
-
 ## License
 
-Files in this repository are made available under the [MIT/Expat License](LICENSE)
+Files in this repository are made available under the MIT/Expat License.
