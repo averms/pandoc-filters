@@ -1,8 +1,7 @@
 srcs := $(wildcard src/*.lua)
-outs := ${srcs:src/%.lua=dist/%.lua}
+outs := $(srcs:src/%.lua=dist/%.lua)
 
 all: $(outs)
-
 $(outs): dist/%.lua : src/%.lua
 	@# remove any debugging
 	@# add languages.txt
@@ -12,7 +11,7 @@ test:
 	@make -Ctest
 
 copy: all
-	cp $(outs) ~/.pandoc/filters/
+	cp $(outs) ~/.local/share/pandoc/filters/
 
 clean:
 	$(RM) dist/*.lua

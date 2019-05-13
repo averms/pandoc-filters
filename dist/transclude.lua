@@ -3,7 +3,6 @@
 -- But the span element has to be inside a Para block, meaning it has to be
 -- surrounded by blank lines.
 
-
 -- Function needs to have a name so that recursion can work.
 -- That is why it is outside the returned table.
 local function transclude(p)

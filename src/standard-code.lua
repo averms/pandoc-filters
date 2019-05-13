@@ -2,8 +2,6 @@
 -- Turns <pre class="*"><code> into <pre><code class="language-*".
 -- Throws away all attributes, so it should come after any filters that use attributes.
 
-local pr = require('pl.pretty')
-
 m4_include(languages.txt)m4_dnl
 
 local function checkClassIsLanguage(name)

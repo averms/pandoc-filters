@@ -1,11 +1,11 @@
 # oldschool
 OS_SRC := oldschool.md
-OS     := ${OS_SRC:%.md=out/%.txt}
+OS     := $(OS_SRC:%.md=out/%.txt)
 # standard-code, code-includes, and transclude
 M_SRC  := alpha.md
-M_HTML := ${M_SRC:%.md=out/%.html}
-M_MD   := ${M_SRC:%.md=out/%.txt}
-M_JSON := ${M_SRC:%.md=out/%.json}
+M_HTML := $(M_SRC:%.md=out/%.html)
+M_MD   := $(M_SRC:%.md=out/%.txt)
+M_JSON := $(M_SRC:%.md=out/%.json)
 
 test: build $(M_HTML) $(M_MD) $(M_JSON) $(OS) find_diffs
 
@@ -49,8 +49,8 @@ build:
 	$(MAKE) -C..
 
 find_diffs:
-	@cd out && bash find_diffs.sh "${M_SRC:%.md=%}"
-	@cd out && bash find_diffs.sh "${OS_SRC:%.md=%}"
+	@cd out && sh find_diffs.sh "$(M_SRC:%.md=%)"
+	@cd out && sh find_diffs.sh "$(OS_SRC:%.md=%)"
 
 clean:
 	rm -f $(M_HTML)
