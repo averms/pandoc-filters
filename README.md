@@ -62,7 +62,7 @@ language name.
 [2]: https://www.w3.org/TR/html5/text-level-semantics.html#the-code-element
 [3]: https://prismjs.com
 
-### oldschool
+### oldschool (still under construction)
 
 Tries to write files in a basic plain format that you might use for README that
 is not meant to be ever rendered. Extends pandoc's `plain` output to add some

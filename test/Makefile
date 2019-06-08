@@ -1,13 +1,13 @@
-# oldschool
-OS_SRC := oldschool.md
-OS     := $(OS_SRC:%.md=out/%.txt)
 # standard-code, code-includes, and transclude
 M_SRC  := alpha.md
 M_HTML := $(M_SRC:%.md=out/%.html)
 M_MD   := $(M_SRC:%.md=out/%.txt)
 M_JSON := $(M_SRC:%.md=out/%.json)
+# oldschool
+OS_SRC := oldschool.md
+OS     := $(OS_SRC:%.md=out/%.txt)
 
-test: build $(M_HTML) $(M_MD) $(M_JSON) $(OS) find_diffs
+all: build $(M_HTML) $(M_MD) $(M_JSON) $(OS) find_diffs
 
 $(M_HTML): $(M_SRC) build
 	@pandoc \
@@ -61,4 +61,4 @@ clean:
 debug:
 	@echo '$(OS)'
 
-.PHONY: clean find_diffs debug build test
+.PHONY: debug clean find_diffs build all
