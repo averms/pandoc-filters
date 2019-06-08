@@ -7,7 +7,6 @@
 
 local stringify = (require 'pandoc.utils').stringify
 local text = require('text')
-local pr = require('pl.pretty')
 
 local function setext(str, under_char)
   local norm_str = stringify(str):gsub('%s+$', '')

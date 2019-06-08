@@ -1,8 +1,6 @@
 --- code-includes
 -- Substitues code blocks containing `inc` attributes with the file inside.
 
-local pr = require('pl.pretty')
-
 -- helper funcs
 local function readPopulatedLines(fpth)
   io.input(fpth)

@@ -5,15 +5,15 @@ all: $(outs)
 $(outs): dist/%.lua : src/%.lua
 	@# remove any debugging
 	@# add languages.txt
-	m4 -Isrc -P .m4 $< | sed '/= require(.pl/d' > $@
+	m4 -Isrc -P .m4 $< | sed '/= require(.inspect.)/d' > $@
 
 test:
 	@make -Ctest
 
-copy: all
+install: all
 	cp $(outs) ~/.local/share/pandoc/filters/
 
 clean:
 	$(RM) dist/*.lua
 
-.PHONY: clean copy test all
+.PHONY: clean install test all
