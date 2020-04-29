@@ -1,14 +1,12 @@
 --- code-includes
 -- Substitues code blocks containing `inc` attributes with the file inside.
 
-
 -- helper funcs
 local function readPopulatedLines(fpth)
   io.input(fpth)
   local contents = io.read("a")
-  -- Sometimes, people put an empty line at the end of their source files
-  -- because their linter tells them to. This does not look good in markdown.
-  -- So, we strip the end
+  -- Unix text editors save files with a newline at the end.
+  -- This is not useful to us so we strip it.
   contents = contents:gsub("%s+$", "")
   return contents
 end
