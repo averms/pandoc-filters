@@ -63,14 +63,13 @@ language name.
 
 ### oldschool (still under construction)
 
-Tries to write files in a basic plain format that you might use for README that
-is not meant to be ever rendered. Extends pandoc's `plain` output to add some
-more goodies like header underlines and link targets. Use with `-s` if you
-want:
+Tries to write files in a basic plain format that you might use for a README that is not
+meant to be ever rendered. Extends pandoc's `plain` output to add some more goodies like
+header underlines and link targets. Use with like this:
 
     pandoc -s -t plain --lua-filter oldschool.lua -o <output> <input>
 
-Insipired by the READMEs of bash and opus.
+Insipired by the READMEs of Bash and Opus.
 
 ## License
 
