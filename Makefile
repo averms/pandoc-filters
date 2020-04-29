@@ -7,11 +7,12 @@ $(outs): dist/%.lua : src/%.lua
 	@# add languages.txt
 	m4 -Isrc -P .m4 $< | sed '/= require(.inspect.)/d' > $@
 
-test:
-	@make -Ctest
+test: all
+	@$(MAKE) -Ctest
 
 install: all
-	cp $(outs) ~/.local/share/pandoc/filters/
+	mkdir -p ~/.local/share/pandoc/filters
+	cp $(outs) ~/.local/share/pandoc/filters
 
 clean:
 	$(RM) dist/*.lua
