@@ -1,9 +1,8 @@
 # Pandoc filters
 
-A collection of pandoc filters that I have made. They are written in lua,
-[which makes them faster than filters written in any other language][1].
-Copy from the `dist` folder into into `$HOME/.pandoc/filters`. Use them with
-`--lua-filter`.
+A collection of pandoc filters that I have made. They are written in lua, [which makes
+them faster than filters written in any other language][1]. Copy from the `dist` folder
+into `$HOME/.local/share/pandoc/filters`. Use them with `--lua-filter`.
 
 [1]: https://pandoc.org/lua-filters.html
 
