@@ -2,10 +2,11 @@
 -- Turns <pre class="*"><code> into <pre><code class="language-*".
 -- Throws away all attributes, so it should come after any filters that use attributes.
 
-m4_include(languages.txt)m4_dnl
+m4_include(languages.m4)m4_dnl
 
 local function checkClassIsLanguage(name)
   -- returns index of the programming language if found or -1 if not found.
+  -- TODO: this is spaghetti. use hash set.
   for i, val in ipairs(languages) do
     if val == name then
       return i
