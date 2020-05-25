@@ -81,6 +81,7 @@ local languages = {
   "hlsl",
   "hpkp",
   "hsts",
+  "html",
   "http",
   "ichigojam",
   "icon",
