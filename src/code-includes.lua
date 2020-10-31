@@ -1,5 +1,5 @@
---- code-includes
--- Substitues code blocks containing `inc` attributes with the file inside.
+--- code-includes: include code from a separate file
+-- © 2020 Aman Verma. Distributed under the MIT license.
 
 -- helper funcs
 local function readPopulatedLines(fpth)

@@ -10,6 +10,8 @@ into `$HOME/.local/share/pandoc/filters`. Use them with `--lua-filter`.
 
 ### code-includes
 
+_For all output formats_
+
 Include code from another file by using a code block attribute and the name of the file
 inside the code block. This is useful for a couple of reasons:
 
@@ -22,9 +24,9 @@ inside the code block. This is useful for a couple of reasons:
 ~~~
 ```
 
-**TODO:** include specific lines
+### standard-code
 
-### standard-code (HTML output only)
+_For HTML output_
 
 Pandoc has great syntax highlighting by built-in but sometimes you just want to use
 something else. Unfortunately, the default pandoc codeblock output with `--no-highlight`
@@ -44,6 +46,8 @@ match a programming language name.
 [spec]: https://www.w3.org/TR/html5/text-level-semantics.html#the-code-element
 
 ### transclude
+
+_For all output formats_
 
 ~~Include content from another file just like AsciiDoc and ReST. Is recursive and works
 with spaces in file names.~~
@@ -65,6 +69,8 @@ of Perl/Python/Awk.
 
 ### oldschool (still under construction)
 
+_For plain output_
+
 Tries to write files in a basic plain format that you might use for a README that is not
 meant to be ever rendered. Extends pandoc's `plain` output to add some more goodies like
 header underlines and link targets. Use with like this:
@@ -72,8 +78,6 @@ header underlines and link targets. Use with like this:
     pandoc -s -t plain --lua-filter oldschool.lua -o <output> <input>
 
 Insipired by the READMEs of Bash and Opus.
-
-**TODO:** finish.
 
 ## License
 

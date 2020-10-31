@@ -1,7 +1,5 @@
---- transclude
--- Substitues span containing a file name with the contents of the file, rendered.
--- But the span element has to be inside a Para block, meaning it has to be
--- surrounded by blank lines.
+--- transclude: recursively include other files
+-- © 2020 Aman Verma. Distributed under the MIT license.
 
 -- Function needs to have a name so that recursion can work.
 -- That is why it is outside the returned table.

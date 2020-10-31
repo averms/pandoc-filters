@@ -1,6 +1,5 @@
---- standard-code
--- Turns <pre class="*"><code> into <pre><code class="language-*">.
--- Throws away all attributes, so it should come after any filters that use attributes.
+--- standard-code: ouput code blocks with class="language-*" attributes
+-- © 2020 Aman Verma. Distributed under the MIT license.
 
 m4_include(languages.lua.m4)m4_dnl
 
