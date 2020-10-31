@@ -1,9 +1,5 @@
---- oldschool
--- This filter tries to write files in a basic plain format that you might
--- use for README that is not meant to be ever rendered.
--- Extends pandoc's `plain` output to add some more goodies like header
--- underlines and link targets.
--- Insipired by the readmes of bash and opus.
+--- oldschool: render a plain text file with fancy ASCII formatting
+-- © 2020 Aman Verma. Distributed under the MIT license.
 
 local stringify = (require 'pandoc.utils').stringify
 local text = require('text')
