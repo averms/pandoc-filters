@@ -1,6 +1,6 @@
 # Pandoc filters
 
-A collection of pandoc filters that I have made. They are written in Lua, [which makes
+A collection of pandoc filters that I wrote. They are written in Lua, [which makes
 them faster than filters written in any other language][1]. Copy from the `dist` folder
 into `$HOME/.local/share/pandoc/filters`. Use them with `--lua-filter`.
 
@@ -26,7 +26,7 @@ inside the code block. This is useful for a couple of reasons:
 
 ### standard-code (HTML output only)
 
-Pandoc has great syntax highlighting by default but sometimes you just want to use
+Pandoc has great syntax highlighting by built-in but sometimes you just want to use
 something else. Unfortunately, the default pandoc codeblock output with `--no-highlight`
 looks like this:
 
@@ -37,11 +37,11 @@ highlight.js. This filter makes sure pandoc outputs the recommended syntax:
 
     <pre><code class="language-lua">print 'Hello World!'</code></pre>
 
-It passes through all classes that don't match a programming language name.
+Use `standard-code.lua` by specifying the programming language name as the
+first class of a code block. It passes through all classes that don't
+match a programming language name.
 
 [spec]: https://www.w3.org/TR/html5/text-level-semantics.html#the-code-element
-
-**TODO:** optimize.
 
 ### transclude
 
@@ -56,7 +56,8 @@ citations (with pandoc-citeproc).
 If you _do_ want internal references to work, try [m4], a generic preprocessor that
 should already be installed on your (Linux|macOS) system. Make sure you change the
 default quotation marks with `changequote`. You can also try [pp], which has better
-defaults.
+defaults. Alternatively, you could probably write your own in less than 20 lines
+of Perl/Python/Awk.
 
 [paf]: https://github.com/pandoc/lua-filters/tree/master/include-files
 [m4]: https://www.gnu.org/software/m4/m4.html
