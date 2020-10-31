@@ -30,8 +30,6 @@ Level 2
 -------
 with no blank line
 
-----------
-
 # Paragraphs
 
 Here's a regular paragraph.
@@ -45,10 +43,8 @@ list item.
 Here's one with a bullet.
 * criminey.
 
-There should be a hard line break  
+There should be a hard line break\
 here.
-
----
 
 # Block Quotes
 
@@ -57,14 +53,14 @@ E-mail style:
 > This is a block quote.
 > It is pretty short.
 
-> Code in a block quote: 
-> 
+> Code in a block quote:
+>
 >     sub status {
 >         print "working";
 >     }
-> 
-> A list: 
-> 
+>
+> A list:
+>
 > 1. item one
 > 2. item two
 >
@@ -72,15 +68,11 @@ E-mail style:
 >
 > > nested
 >
->>  nested
->
 
 This should 'not' be a block quote: 2
 > 1.
 
 And a following paragraph.
-
-* * * *
 
 # Code Blocks
 
@@ -106,46 +98,8 @@ ___________
 
 ## Unordered
 
-Asterisks tight:
-
-*	asterisk 1
-*	asterisk 2
-*	asterisk 3
-
-Asterisks loose:
-
-*	asterisk 1
-
-*	asterisk 2
-
-*	asterisk 3
-
-Pluses tight:
-
-+	Plus 1
-+	Plus 2
-+	Plus 3
-
-Pluses loose:
-
-+	Plus 1
-
-+	Plus 2
-
-+	Plus 3
-
-Minuses tight:
-
 -	Minus 1
 -	Minus 2
--	Minus 3
-
-Minuses loose:
-
--	Minus 1
-
--	Minus 2
-
 -	Minus 3
 
 ## Ordered
@@ -162,29 +116,13 @@ and:
 2. Two
 3. Three
 
-Loose using tabs:
-
-1.	First
-
-2.	Second
-
-3.	Third
-
-and using spaces:
-
-1. One
-
-2. Two
-
-3. Three
-
 Multiple paragraphs:
 
 1.	Item 1, graf one.
 
 	Item 1. graf two. The quick brown fox jumped over the lazy dog's
 	back.
-	
+
 2.	Item 2.
 
 3.	Item 3.
@@ -214,7 +152,7 @@ Same thing but with paragraphs:
 	* Fie
 	* Foe
 
-3. Third 
+3. Third
 
 ## Tabs and spaces
 
@@ -226,7 +164,7 @@ Same thing but with paragraphs:
 
 	+	this is an example list item
 		indented with tabs
-	
+
 	+   this is an example list item
 	    indented with spaces
 
@@ -288,20 +226,6 @@ orange
 banana
 :	yellow fruit
 
-Loose:
-
-apple
-
-:   red fruit
-
-orange
-
-:   orange fruit
-
-banana
-
-:   yellow fruit
-
 Multiple blocks with italics:
 
 *apple*
@@ -358,8 +282,6 @@ orange
     1. sublist
     2. sublist
 
------
-
 # Inline Markup
 
 This is *emphasized*, and so _is this_.
@@ -405,7 +327,7 @@ Here is some quoted '`code`' and a "[quoted link][1]".
 
 Some dashes:  one---two --- three---four --- five.
 
-Dashes between numbers: 5--7, 255--66, 1987--1999. 
+Dashes between numbers: 5--7, 255--66, 1987--1999.
 
 Ellipses...and...and....
 
@@ -431,7 +353,7 @@ Here is some unicode:
 
 - I hat: Î
 - o umlaut: ö
-- section: § 
+- section: §
 - set membership: ∈
 - copyright: ©
 
@@ -445,38 +367,6 @@ This & that.
 
 6 > 5.
 
-Backslash: \\
-
-Backtick: \`
-
-Asterisk: \*
-
-Underscore: \_
-
-Left brace: \{
-
-Right brace: \}
-
-Left bracket: \[
-
-Right bracket: \]
-
-Left paren: \(
-
-Right paren: \)
-
-Greater-than: \>
-
-Hash: \#
-
-Period: \.
-
-Bang: \!
-
-Plus: \+
-
-Minus: \-
-
 - - - - - - - - - - - - -
 
 # Links
@@ -486,16 +376,6 @@ Minus: \-
 Just a [URL](/url/).
 
 [URL and title](/url/ "title").
-
-[URL and title](/url/  "title preceded by two spaces").
-
-[URL and title](/url/	"title preceded by a tab").
-
-[URL and title](/url/ "title with "quotes" in it")
-
-[URL and title](/url/ 'title with single quotes')
-
-[with\_underscore](/url/with_underscore)
 
 [Email link](mailto:nobody@nowhere.net)
 
@@ -513,18 +393,9 @@ With [embedded [brackets]][b].
 
 Indented [once][].
 
-Indented [twice][].
-
-Indented [thrice][].
-
 This should [not][] be a link.
 
- [once]: /url
-  [twice]: /url
-
-   [thrice]: /url
-
-    [not]: /url
+[once]: /url
 
 [b]: /url/
 
@@ -545,7 +416,7 @@ Here's an [inline link](/script?foo=1&bar=2).
 Here's an [inline link in pointy braces](</script?foo=1&bar=2>).
 
 [1]: http://example.com/?foo=1&bar=2
-[2]: http://att.com/  "AT&T" 
+[2]: http://att.com/  "AT&T"
 
 ## Autolinks
 
@@ -569,18 +440,18 @@ Auto-links should not occur here: `<http://example.com/>`
 
 From "Voyage dans la Lune" by Georges Melies (1902):
 
-![lalune][]
+![The famous moon still from Georges Méliès's Le Voyage dans la Lune][lalune]
 
-   [lalune]: lalune.jpg "Voyage dans la Lune"
+[lalune]: lalune.jpg "Voyage dans la Lune"
 
-Here is a movie ![movie](movie.jpg) icon.
+Here is a movie ![icon of a movie](movie.jpg) icon.
 
 ----
 
 # Footnotes
 
 Here is a footnote reference,[^1] and another.[^longnote]
-This should *not* be a footnote reference, because it 
+This should *not* be a footnote reference, because it
 contains a space.[^my note]  Here is an inline note.^[This
 is *easier* to type.  Inline notes may contain
 [links](http://google.com) and `]` verbatim characters,
@@ -591,7 +462,7 @@ as well as [bracketed text].]
 1.  And in list items.^[In list.]
 
 [^longnote]: Here's the long note.  This one contains multiple
-blocks.  
+blocks.
 
     Subsequent blocks are indented to show that they belong to the
     footnote (as with list items).

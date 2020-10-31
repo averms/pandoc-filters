@@ -1,0 +1,24 @@
+<p>Here is test 1 of <code>code-includes</code>:</p>
+<pre class="rust"><code>// A test file to be included in 
+fn fib(n: u32) -&gt; u32 {
+    match n {
+        0 =&gt; 1,
+        1 =&gt; 1,
+        _ =&gt; fib(n - 1) + fib(n - 2),
+    }
+}</code></pre>
+<p>Here is test 2 of <code>code-includes</code>:</p>
+<pre class="rust memes others"><code>// A test file to be included in 
+fn fib(n: u32) -&gt; u32 {
+    match n {
+        0 =&gt; 1,
+        1 =&gt; 1,
+        _ =&gt; fib(n - 1) + fib(n - 2),
+    }
+}</code></pre>
+<p>Here is test 3 of <code>code-includes</code>:</p>
+<pre id="passed-through"><code>yes
+// This should be kept
+&gt;&gt;&gt;
+please don&#39;t fold it
+nope.</code></pre>

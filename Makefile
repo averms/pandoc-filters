@@ -1,15 +1,15 @@
+root := $(PWD)
 srcs := $(wildcard src/*.lua)
 outs := $(srcs:src/%.lua=dist/%.lua)
 
 all: $(outs)
 $(outs): dist/%.lua : src/%.lua
-	@# remove any debugging
-	@# add languages.txt
-	# m4 -Isrc -P .m4 $< | sed '/= require(.inspect.)/d' > $@
-	m4 -Isrc -P .m4 $< > $@
+# m4 -Isrc -P .m4 $< | sed '/= require(.inspect.)/d' > $@
+	@# remove any debugging and add languages.txt
+	m4 --include src/ --prefix-builtins config.m4 $< >$@
 
-test: all
-	@$(MAKE) -Ctest
+check: all
+	cd test && ./t.sh
 
 install: all
 	mkdir -p ~/.local/share/pandoc/filters
@@ -18,4 +18,4 @@ install: all
 clean:
 	$(RM) dist/*.lua
 
-.PHONY: clean install test all
+.PHONY: clean install check all

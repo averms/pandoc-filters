@@ -1,0 +1,35 @@
+Here is test 1 of `code-includes`:
+
+``` {.rust}
+// A test file to be included in 
+fn fib(n: u32) -> u32 {
+    match n {
+        0 => 1,
+        1 => 1,
+        _ => fib(n - 1) + fib(n - 2),
+    }
+}
+```
+
+Here is test 2 of `code-includes`:
+
+``` {.rust .memes .others}
+// A test file to be included in 
+fn fib(n: u32) -> u32 {
+    match n {
+        0 => 1,
+        1 => 1,
+        _ => fib(n - 1) + fib(n - 2),
+    }
+}
+```
+
+Here is test 3 of `code-includes`:
+
+``` {#passed-through}
+yes
+// This should be kept
+>>>
+please don't fold it
+nope.
+```
