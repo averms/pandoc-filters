@@ -1,24 +1,13 @@
 --- standard-code
--- Turns <pre class="*"><code> into <pre><code class="language-*".
+-- Turns <pre class="*"><code> into <pre><code class="language-*">.
 -- Throws away all attributes, so it should come after any filters that use attributes.
 
-m4_include(languages.m4)m4_dnl
-
-local function checkClassIsLanguage(name)
-  -- returns index of the programming language if found or -1 if not found.
-  -- TODO: this is spaghetti. use hash set.
-  for i, val in ipairs(languages) do
-    if val == name then
-      return i
-    end
-  end
-  return -1
-end
+m4_include(languages.lua.m4)m4_dnl
 
 local function escape(s, in_attribute)
-  -- escape according to html5 rules
+  -- escape according to HTML 5 rules
   return s:gsub(
-    '[<>&"\']',
+    [=[[<>&"']]=],
     function(x)
       if x == '<' then
         return '&lt;'
@@ -38,23 +27,20 @@ local function escape(s, in_attribute)
 end
 
 local function getCodeClass(classes)
-  -- check if classes includes a programming language name. Side effect is that it
-  -- removes the class that matches from the `classes` table
-  -- returns: Valid class attr using first match (with a space at beginning).
-  --          or empty string if no classes match a programming language name.
-  local classIndex = -1
+  -- Check if the first element of classes (pandoc.CodeBlock.classes) matches a
+  -- programming language name. If it does, it gets removed from classes and a valid
+  -- HTML class attribute string (with space at beginning) is returned.
 
-  for i, cl in ipairs(classes) do
-    classIndex = checkClassIsLanguage(cl)
-    if classIndex ~= -1 then
-      return ' class="language-' .. table.remove(classes, i) .. '"'
-    end
+  if languages[classes[1]] then
+    return ' class="language-' .. table.remove(classes, 1) .. '"'
+  else
+    return ''
   end
-  return ''
 end
 
 local function makeIdentifier(ident)
-  -- returns: valid id attr (with a space at the beginning) OR empty string
+  -- Returns a valid HTML id attribute (with space at beginning) OR empty string.
+
   if #ident ~= 0 then
     return ' id="'.. ident .. '"'
   else
@@ -63,8 +49,9 @@ local function makeIdentifier(ident)
 end
 
 local function makeClasses(classes)
-  -- returns valid class attr with classes separated by spaces (with a space at
-  -- the beginning) OR empty string.
+  -- Returns a valid HTML class attribute with classes separated by spaces (with a space
+  -- at the beginning) OR empty string.
+
   if #classes ~= 0 then
     return ' class="' .. table.concat(classes, " ") .. '"'
   else
@@ -86,7 +73,7 @@ return {
       local pre_code = string.format(
         '<pre%s%s><code%s>%s</code></pre>', id, classReg, classLang, escape(p.text)
       )
-      return pandoc.RawBlock('html', pre_code ,'RawBlock')
+      return pandoc.RawBlock('html', pre_code, 'RawBlock')
     end,
 
   }

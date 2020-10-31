@@ -1,26 +1,14 @@
 --- standard-code
--- Turns <pre class="*"><code> into <pre><code class="language-*".
+-- Turns <pre class="*"><code> into <pre><code class="language-*">.
 -- Throws away all attributes, so it should come after any filters that use attributes.
 
-local languages = {"abap","abnf","actionscript","ada","al","antlr4","apacheconf","apl","applescript","aql","arduino","arff","asciidoc","asm6502","aspnet","autohotkey","autoit","bash","basic","batch","bbcode","bison","bnf","brainfuck","brightscript","bro","c","cil","clike","clojure","cmake","coffeescript","concurnas","cpp","crystal","csharp","csp","css","css-extras","d","dart","dax","diff","django","dns-zone-file","docker","ebnf","eiffel","ejs","elixir","elm","erb","erlang","etlua","excel-formula","factor","firestore-security-rules","flow","fortran","fsharp","ftl","gcode","gdscript","gedcom","gherkin","git","glsl","gml","go","graphql","groovy","haml","handlebars","haskell","haxe","hcl","hlsl","hpkp","hsts","http","ichigojam","icon","iecst","inform7","ini","io","j","java","javadoc","javadoclike","javascript","javastacktrace","jolie","jq","js-extras","js-templates","jsdoc","json","json5","jsonp","jsx","julia","keyman","kotlin","latex","latte","less","lilypond","liquid","lisp","livescript","llvm","lolcode","lua","makefile","markdown","markup","markup-templating","matlab","mel","meta","mizar","monkey","moonscript","n1ql","n4js","nand2tetris-hdl","nasm","neon","nginx","nim","nix","nsis","objectivec","ocaml","opencl","oz","parigp","parser","pascal","pascaligo","pcaxis","peoplecode","perl","php","php-extras","phpdoc","plsql","powerquery","powershell","processing","prolog","properties","protobuf","pug","puppet","pure","purebasic","python","q","qml","qore","r","racket","reason","regex","renpy","rest","rip","roboconf","robotframework","ruby","rust","sas","sass","scala","scheme","scss","shell-session","smalltalk","smarty","solidity","solution-file","soy","sparql","splunk-spl","sqf","sql","stylus","swift","t4-cs","t4-templating","t4-vb","tap","tcl","textile","toml","tsx","tt2","turtle","twig","typescript","unrealscript","vala","vbnet","velocity","verilog","vhdl","vim","visual-basic","warpscript","wasm","wiki","xeora","xojo","xquery","yaml","zig"
-}
+local languages = {meta = true,markup = true,css = true,clike = true,javascript = true,abap = true,abnf = true,actionscript = true,ada = true,agda = true,al = true,antlr4 = true,apacheconf = true,apl = true,applescript = true,aql = true,arduino = true,arff = true,asciidoc = true,aspnet = true,asm6502 = true,autohotkey = true,autoit = true,bash = true,basic = true,batch = true,bbcode = true,bison = true,bnf = true,brainfuck = true,brightscript = true,bro = true,bsl = true,c = true,csharp = true,cpp = true,cil = true,clojure = true,cmake = true,coffeescript = true,concurnas = true,csp = true,crystal = true,['css-extras'] = true,cypher = true,d = true,dart = true,dax = true,dhall = true,diff = true,django = true,['dns-zone-file'] = true,docker = true,ebnf = true,editorconfig = true,eiffel = true,ejs = true,elixir = true,elm = true,etlua = true,erb = true,erlang = true,['excel-formula'] = true,fsharp = true,factor = true,['firestore-security-rules'] = true,flow = true,fortran = true,ftl = true,gml = true,gcode = true,gdscript = true,gedcom = true,gherkin = true,git = true,glsl = true,go = true,graphql = true,groovy = true,haml = true,handlebars = true,haskell = true,haxe = true,hcl = true,hlsl = true,http = true,hpkp = true,hsts = true,ichigojam = true,icon = true,ignore = true,inform7 = true,ini = true,io = true,j = true,java = true,javadoc = true,javadoclike = true,javastacktrace = true,jolie = true,jq = true,jsdoc = true,['js-extras'] = true,json = true,json5 = true,jsonp = true,jsstacktrace = true,['js-templates'] = true,julia = true,keyman = true,kotlin = true,latex = true,latte = true,less = true,lilypond = true,liquid = true,lisp = true,livescript = true,llvm = true,lolcode = true,lua = true,makefile = true,markdown = true,['markup-templating'] = true,matlab = true,mel = true,mizar = true,mongodb = true,monkey = true,moonscript = true,n1ql = true,n4js = true,['nand2tetris-hdl'] = true,naniscript = true,nasm = true,neon = true,nginx = true,nim = true,nix = true,nsis = true,objectivec = true,ocaml = true,opencl = true,oz = true,parigp = true,parser = true,pascal = true,pascaligo = true,pcaxis = true,peoplecode = true,perl = true,php = true,phpdoc = true,['php-extras'] = true,plsql = true,powerquery = true,powershell = true,processing = true,prolog = true,properties = true,protobuf = true,pug = true,puppet = true,pure = true,purebasic = true,purescript = true,python = true,q = true,qml = true,qore = true,r = true,racket = true,jsx = true,tsx = true,reason = true,regex = true,renpy = true,rest = true,rip = true,roboconf = true,robotframework = true,ruby = true,rust = true,sas = true,sass = true,scss = true,scala = true,scheme = true,['shell-session'] = true,smali = true,smalltalk = true,smarty = true,solidity = true,['solution-file'] = true,soy = true,sparql = true,['splunk-spl'] = true,sqf = true,sql = true,stan = true,iecst = true,stylus = true,swift = true,['t4-templating'] = true,['t4-cs'] = true,['t4-vb'] = true,tap = true,tcl = true,tt2 = true,textile = true,toml = true,turtle = true,twig = true,typescript = true,typoscript = true,unrealscript = true,vala = true,vbnet = true,velocity = true,verilog = true,vhdl = true,vim = true,['visual-basic'] = true,warpscript = true,wasm = true,wiki = true,xeora = true,['xml-doc'] = true,xojo = true,xquery = true,yaml = true,yang = true,zig = true}
 
-
-local function checkClassIsLanguage(name)
-  -- returns index of the programming language if found or -1 if not found.
-  -- TODO: this is spaghetti. use hash set.
-  for i, val in ipairs(languages) do
-    if val == name then
-      return i
-    end
-  end
-  return -1
-end
 
 local function escape(s, in_attribute)
-  -- escape according to html5 rules
+  -- escape according to HTML 5 rules
   return s:gsub(
-    '[<>&"\']',
+    [=[[<>&"']]=],
     function(x)
       if x == '<' then
         return '&lt;'
@@ -40,23 +28,20 @@ local function escape(s, in_attribute)
 end
 
 local function getCodeClass(classes)
-  -- check if classes includes a programming language name. Side effect is that it
-  -- removes the class that matches from the `classes` table
-  -- returns: Valid class attr using first match (with a space at beginning).
-  --          or empty string if no classes match a programming language name.
-  local classIndex = -1
+  -- Check if the first element of classes (pandoc.CodeBlock.classes) matches a
+  -- programming language name. If it does, it gets removed from classes and a valid
+  -- HTML class attribute string (with space at beginning) is returned.
 
-  for i, cl in ipairs(classes) do
-    classIndex = checkClassIsLanguage(cl)
-    if classIndex ~= -1 then
-      return ' class="language-' .. table.remove(classes, i) .. '"'
-    end
+  if languages[classes[1]] then
+    return ' class="language-' .. table.remove(classes, 1) .. '"'
+  else
+    return ''
   end
-  return ''
 end
 
 local function makeIdentifier(ident)
-  -- returns: valid id attr (with a space at the beginning) OR empty string
+  -- Returns a valid HTML id attribute (with space at beginning) OR empty string.
+
   if #ident ~= 0 then
     return ' id="'.. ident .. '"'
   else
@@ -65,8 +50,9 @@ local function makeIdentifier(ident)
 end
 
 local function makeClasses(classes)
-  -- returns valid class attr with classes separated by spaces (with a space at
-  -- the beginning) OR empty string.
+  -- Returns a valid HTML class attribute with classes separated by spaces (with a space
+  -- at the beginning) OR empty string.
+
   if #classes ~= 0 then
     return ' class="' .. table.concat(classes, " ") .. '"'
   else
@@ -88,7 +74,7 @@ return {
       local pre_code = string.format(
         '<pre%s%s><code%s>%s</code></pre>', id, classReg, classLang, escape(p.text)
       )
-      return pandoc.RawBlock('html', pre_code ,'RawBlock')
+      return pandoc.RawBlock('html', pre_code, 'RawBlock')
     end,
 
   }
