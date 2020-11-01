@@ -4,7 +4,7 @@
 m4_include(languages.lua.m4)m4_dnl
 
 local function escape(s, in_attribute)
-  -- escape according to HTML 5 rules
+  -- Escape according to HTML 5 rules
   return s:gsub(
     [=[[<>&"']]=],
     function(x)

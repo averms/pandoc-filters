@@ -5,7 +5,7 @@ local languages = {meta = true,markup = true,css = true,clike = true,javascript 
 
 
 local function escape(s, in_attribute)
-  -- escape according to HTML 5 rules
+  -- Escape according to HTML 5 rules
   return s:gsub(
     [=[[<>&"']]=],
     function(x)

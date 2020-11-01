@@ -1,7 +1,6 @@
 --- code-includes: include code from a separate file
 -- © 2020 Aman Verma. Distributed under the MIT license.
 
--- helper funcs
 local function readPopulatedLines(fpth)
   io.input(fpth)
   local contents = io.read('a')
@@ -28,6 +27,6 @@ return {
         cb.text = readPopulatedLines(filename)
       end
       return cb
-    end,
+    end
   }
 }
