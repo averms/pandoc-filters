@@ -3,7 +3,7 @@
 
 m4_include(languages.lua.m4)m4_dnl
 
-local function escape(s, in_attribute)
+local function escape(s)
   -- Escape according to HTML 5 rules
   return s:gsub(
     [=[[<>&"']]=],
@@ -60,19 +60,19 @@ end
 
 return {
   {
-    CodeBlock = function(p)
+    CodeBlock = function(elem)
       if FORMAT ~= 'html' then
         return nil
       end
 
-      id = makeIdentifier(p.identifier)
-      classLang = getCodeClass(p.classes)
-      classReg = makeClasses(p.classes)
+      id = makeIdentifier(elem.identifier)
+      classLang = getCodeClass(elem.classes)
+      classReg = makeClasses(elem.classes)
 
-      local pre_code = string.format(
-        '<pre%s%s><code%s>%s</code></pre>', id, classReg, classLang, escape(p.text)
+      local preCode = string.format(
+        '<pre%s%s><code%s>%s</code></pre>', id, classReg, classLang, escape(elem.text)
       )
-      return pandoc.RawBlock('html', pre_code, 'RawBlock')
+      return pandoc.RawBlock('html', preCode, 'RawBlock')
     end,
 
   }
