@@ -33,18 +33,24 @@ test_plain() {
     diff -u "$outexp" "$out"
 }
 
+
+# If being sourced then bye
+if [[ "${BASH_SOURCE[0]}" != "${0}" ]]; then
+    return 0
+fi
+
 (
     cd code-includes
     mkdir -p out
-    source t.sh
+    source t.bash
 )
 (
     cd standard-code
     mkdir -p out
-    source t.sh
+    source t.bash
 )
 
 # (
 #     cd oldschool
-#     source t.sh
+#     source t.bash
 # )

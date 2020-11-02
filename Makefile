@@ -9,7 +9,7 @@ $(outs): dist/%.lua : src/%.lua
 	m4 --include src/ --prefix-builtins config.m4 $< >$@
 
 check: all
-	cd test && ./t.sh
+	cd test && ./t.bash
 
 install: all
 	mkdir -p ~/.local/share/pandoc/filters
