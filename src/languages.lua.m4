@@ -83,6 +83,7 @@ local languages = {
   graphql = true,
   groovy = true,
   haml = true,
+  html = true,
   handlebars = true,
   haskell = true,
   haxe = true,
