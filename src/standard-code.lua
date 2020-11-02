@@ -62,7 +62,7 @@ return {
   {
     CodeBlock = function(p)
       if FORMAT ~= 'html' then
-        return p
+        return nil
       end
 
       id = makeIdentifier(p.identifier)
