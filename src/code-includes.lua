@@ -13,19 +13,19 @@ end
 return {
   {
     CodeBlock = function(cb)
-      if cb.attributes['inc'] then
-        -- Strip all whitespace around the text.
-        filename = cb.text:match('^%s*(.-)%s*$')
-        -- Remove the inc attribute so it doesn't show up in output.
-        cb.attributes['inc'] = nil
-
-        if filename == '' then
-          io.stderr:write('There was no filename inside the code block.')
-          return cb
-        end
-
-        cb.text = readPopulatedLines(filename)
+      if not cb.attributes['inc'] then
+        return nil
       end
+
+      -- Strip all whitespace around the text.
+      filename = cb.text:match('^%s*(.-)%s*$')
+      -- Remove the inc attribute so it doesn't show up in output.
+      cb.attributes['inc'] = nil
+      if filename == '' then
+        io.stderr:write('There was no filename inside the code block.')
+        return nil
+      end
+      cb.text = readPopulatedLines(filename)
       return cb
     end
   }
