@@ -19,17 +19,19 @@ on:
 
 jobs:
   test:
+    env:
+      PANDOC_VERSION: "2.11.1.1"
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/cache@v2
         with:
           path: pandoc.deb
-          key: ${{ runner.os }}-${{ hashFiles('pandoc.deb') }}
+          key: ${{ runner.os }}-${{ env.PANDOC_VERSION }}
       - run: |
           sudo apt-get update
           if ! [ -f pandoc.deb ]; then
             sudo apt-get install -y curl
-            curl -fsSL -o pandoc.deb 'https://github.com/jgm/pandoc/releases/download/2.11.1.1/pandoc-2.11.1.1-1-amd64.deb'
+            curl -fsSL -o pandoc.deb "https://github.com/jgm/pandoc/releases/download/$PANDOC_VERSION/pandoc-$PANDOC_VERSION-1-amd64.deb"
           fi
           sudo apt-get install -y ./pandoc.deb
       - uses: actions/checkout@v2
