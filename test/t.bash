@@ -25,11 +25,11 @@ test_md() {
     diff -u "$outexp" "$out"
 }
 
-test_plain() {
+test_cmarkx() {
     in="$1"
     out="out/${1%md}txt"
     outexp="${out}.exp"
-    $pandoc -f markdown -t plain "$in" -o "$out"
+    $pandoc -f markdown -t commonmark_x "$in" -o "$out"
     diff -u "$outexp" "$out"
 }
 
