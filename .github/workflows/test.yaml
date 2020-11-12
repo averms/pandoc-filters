@@ -3,14 +3,18 @@ name: Run tests
 on:
   push:
     branches: [master]
-    paths-ignore: &ignorepaths
+    paths-ignore:
       - "*.md"
       - "src/*"
       - "LICENSE"
       - ".gitignore"
   pull_request:
     branches: [master]
-    paths-ignore: *ignorepaths
+    paths-ignore:
+      - "*.md"
+      - "src/*"
+      - "LICENSE"
+      - ".gitignore"
   workflow_dispatch:
 
 jobs:
@@ -22,12 +26,12 @@ jobs:
           path: pandoc.deb
           key: ${{ runner.os }}-${{ hashFiles('pandoc.deb') }}
       - run: |
-          sudo apt update
-          sudo apt install -y curl
+          sudo apt-get update
           if ! [ -f pandoc.deb ]; then
+            sudo apt-get install -y curl
             curl -fsSL -o pandoc.deb 'https://github.com/jgm/pandoc/releases/download/2.11.1.1/pandoc-2.11.1.1-1-amd64.deb'
           fi
-          sudo apt install -y ./pandoc.deb
+          sudo apt-get install -y ./pandoc.deb
       - uses: actions/checkout@v2
       - run: |
           make check
