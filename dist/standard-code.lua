@@ -53,7 +53,7 @@ local function makeClasses(classes)
   -- at the beginning) OR empty string.
 
   if #classes ~= 0 then
-    return ' class="' .. table.concat(classes, " ") .. '"'
+    return ' class="' .. table.concat(classes, ' ') .. '"'
   else
     return ''
   end
