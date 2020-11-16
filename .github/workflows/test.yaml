@@ -28,8 +28,9 @@ jobs:
           path: pandoc.deb
           key: ${{ runner.os }}-${{ env.PANDOC_VERSION }}
       - run: |
-          sudo apt-get update
           if ! [ -f pandoc.deb ]; then
+            printf 'Downloading pandoc.deb\n'
+            sudo apt-get update
             sudo apt-get install -y curl
             curl -fsSL -o pandoc.deb "https://github.com/jgm/pandoc/releases/download/$PANDOC_VERSION/pandoc-$PANDOC_VERSION-1-amd64.deb"
           fi
