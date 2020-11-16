@@ -31,8 +31,6 @@ jobs:
       - run: |
           if ! [ -f pandoc.deb ]; then
             printf '***** On %s. Downloading pandoc.deb\n' "$PWD"
-            sudo apt-get update
-            sudo apt-get install -y curl
             curl -fsSL -o pandoc.deb "https://github.com/jgm/pandoc/releases/download/$PANDOC_VERSION/pandoc-$PANDOC_VERSION-1-amd64.deb"
           fi
           sudo apt-get install -y ./pandoc.deb
