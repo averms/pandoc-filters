@@ -21,11 +21,11 @@ inside the code block. This is useful for a couple of reasons:
 File paths can be either absolute or relative. Relative paths are relative to
 the directory from which pandoc is run.
 
-```
-~~~{.python inc=yes}
+````
+```{.python inc=yes}
 /path/to/file.py
-~~~
 ```
+````
 
 ### standard-code
 
@@ -51,8 +51,8 @@ Using `standard-code.lua` doesn't require any changes in your source file.
 
 _For all output formats_
 
-~~Include content from another file just like AsciiDoc and ReST. Is recursive and works
-with spaces in file names.~~
+Include content from another file just like in AsciiDoc and ReST. Is recursive and works
+with spaces in file names.
 
 The [official Pandoc filters repository has a filter][paf] that does this and has a
 couple of extra features. Use that one instead.
