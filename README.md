@@ -37,9 +37,8 @@ looks like this:
 
     <pre class="lua"><code>print 'Hello World!'</code></pre>
 
-The above is not what the [W3C recommends][spec], nor is it compatible with
-prism.js and highlight.js. This filter makes sure pandoc outputs the
-recommended syntax:
+The above is not what the [W3C recommends][spec], nor is it compatible with prism.js.
+This filter makes sure pandoc outputs the recommended syntax:
 
     <pre><code class="language-lua">print 'Hello World!'</code></pre>
 
