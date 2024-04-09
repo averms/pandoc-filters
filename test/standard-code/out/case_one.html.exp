@@ -3,12 +3,13 @@
 <pre><code class="language-python">some_python = &quot; &quot;
 some_python &gt; 0</code></pre>
 <p>This should not be affected:</p>
-<pre class="notreallang"><code>fun main() {
+<pre class="notreallang kotlin"><code>fun main() {
     Sus.Oop.Brintln(&quot;Hello World!&quot;);
 }</code></pre>
 <p>Neither should this one</p>
 <pre><code>hi</code></pre>
-<p>This should be a language-html block. The ids and classes should not be affected:</p>
+<p>This should be a language-html block. The ids and classes should not
+be affected:</p>
 <pre id="thebest" class="anotherfakeone cool"><code class="language-html">&lt;p&gt;
 &lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;F&lt;/kbd&gt;
 &lt;/p&gt;</code></pre>
