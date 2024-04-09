@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 set -eu
 
-test_json() {
+test_native() {
     in="$1"
-    out="out/${1%md}json"
+    out="out/${1%md}ast"
     outexp="${out}.exp"
-    $pandoc -f markdown -t json "$in" -o "$out"
+    $pandoc -f markdown -t native "$in" -o "$out"
     diff -u "$outexp" "$out"
 }
 

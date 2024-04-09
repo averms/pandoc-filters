@@ -1,0 +1,52 @@
+[ Para
+    [ Str "Here"
+    , Space
+    , Str "is"
+    , Space
+    , Str "test"
+    , Space
+    , Str "1"
+    , Space
+    , Str "of"
+    , Space
+    , Code ( "" , [] , [] ) "code-includes"
+    , Str ":"
+    ]
+, CodeBlock
+    ( "" , [ "rust" ] , [] )
+    "// A test file to be included in \nfn fib(n: u32) -> u32 {\n    match n {\n        0 => 1,\n        1 => 1,\n        _ => fib(n - 1) + fib(n - 2),\n    }\n}"
+, Para
+    [ Str "Here"
+    , Space
+    , Str "is"
+    , Space
+    , Str "test"
+    , Space
+    , Str "2"
+    , Space
+    , Str "of"
+    , Space
+    , Code ( "" , [] , [] ) "code-includes"
+    , Str ":"
+    ]
+, CodeBlock
+    ( "" , [ "rust" , "memes" , "others" ] , [] )
+    "// A test file to be included in \nfn fib(n: u32) -> u32 {\n    match n {\n        0 => 1,\n        1 => 1,\n        _ => fib(n - 1) + fib(n - 2),\n    }\n}"
+, Para
+    [ Str "Here"
+    , Space
+    , Str "is"
+    , Space
+    , Str "test"
+    , Space
+    , Str "3"
+    , Space
+    , Str "of"
+    , Space
+    , Code ( "" , [] , [] ) "code-includes"
+    , Str ":"
+    ]
+, CodeBlock
+    ( "passed-through" , [] , [] )
+    "yes\n// This should be kept\n>>>\nplease don't fold it\nnope."
+]
