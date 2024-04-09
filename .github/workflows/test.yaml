@@ -20,18 +20,18 @@ on:
 jobs:
   test-on-ubuntu:
     env:
-      PANDOC_VERSION: "2.14.2"
+      PANDOC_VERSION: "3.1.13"
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/cache@v2
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
         with:
           path: pandoc.deb
           key: ${{ runner.os }}--${{ env.PANDOC_VERSION }}
       - run: |
           if ! [ -f pandoc.deb ]; then
             printf '***** On %s. Downloading pandoc.deb\n' "$PWD"
-            curl -fsSL -o pandoc.deb "https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-1-amd64.deb"
+            curl -fsSLo pandoc.deb "https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/pandoc-${PANDOC_VERSION}-1-amd64.deb"
           fi
           sudo apt-get install -y ./pandoc.deb
       - run: |
